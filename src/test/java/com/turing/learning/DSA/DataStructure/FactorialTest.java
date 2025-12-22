@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class factorialTest {
+public class FactorialTest {
 	
 	@Test
 	public void baseCase()

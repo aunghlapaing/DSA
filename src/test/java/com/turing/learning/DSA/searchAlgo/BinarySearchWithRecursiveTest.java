@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class binarySearchWithRecursiveTest {
+public class BinarySearchWithRecursiveTest {
 	
 	BinarySearchWithRecursive binary = new BinarySearchWithRecursive();
 	
