@@ -11,7 +11,7 @@ public class LinkedListTest {
 	
 	LinkedList list = new LinkedList();
 	
-	/*
+	
 	@Test
 	public void addFirstCase()
 	{
@@ -26,8 +26,7 @@ public class LinkedListTest {
 		assertEquals( 10, ((Node)iterator.next()).getValue() );	
 		
 	}
-	*/
-	
+
 	@Test
 	public void addLastCase()
 	{
@@ -44,7 +43,7 @@ public class LinkedListTest {
 	}
 	
 	
-	/*
+	
 	@Test
 	public void addFirstaddListMixedCase()
 	{
@@ -109,7 +108,7 @@ public class LinkedListTest {
 		
 		assertEquals( null, deleteNode );
 	}
-	*/
+	
 	@Test
 	public void deletePostiveFirstCase()
 	{
