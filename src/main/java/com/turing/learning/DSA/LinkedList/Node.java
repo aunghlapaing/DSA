@@ -3,7 +3,7 @@ package com.turing.learning.DSA.LinkedList;
 public class Node extends LinkedList {
 	
 	int value;
-	Node next;
+	public Node next;
 	
 	Node(int item)
 	{
@@ -18,6 +18,11 @@ public class Node extends LinkedList {
 	public int getValue()
 	{
 		return this.value;
+	}
+
+	public Node getNext() 
+	{
+		return this.next;
 	}
 
 }

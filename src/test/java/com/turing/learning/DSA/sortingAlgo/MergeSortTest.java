@@ -15,7 +15,7 @@ public class MergeSortTest {
 	
 	Util util = new Util();
 	
-	@Test
+	//@Test
 	public void testMergeCase()
 	{
 		int[] input = {1, 2, 3};

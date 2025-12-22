@@ -8,13 +8,15 @@ public class MergeSort {
 
 	public void merge(int[] input, int left, int middle, int right) 
 	{
+		System.out.println("Input after merge" + Arrays.toString(input)+"left"+left+"middle"+middle+"right"+right);
+		
 		int i = left;
 		int j = middle + 1;
 		
 		int k = 0;
 		int len = right-left+1;
 		int[] result = new int[len];
-		while ( i <= middle & j <= right ) // i and j are equal
+		while ( i <= middle && j <= right ) // i and j are equal
 		{
 			if ( input[i] == input[j] )
 			{
@@ -47,12 +49,16 @@ public class MergeSort {
 		System.out.println("Input" + Arrays.toString(input)+"left"+left+"middle"+middle+"right"+right);
 		if ( left != right )
 		{
+			// split into two arrays
+			// first array
 			int firstMiddle = (left + middle)/2;
 			this.mergeSort(input, left, firstMiddle, middle);
 			
+			// second array
 			int secondMiddle = ( middle + 1 + right )/2;
 			this.mergeSort(input, middle+1, secondMiddle, right);
 			
+			// merge
 			this.merge(input, left, middle, right);
 		}
 		else

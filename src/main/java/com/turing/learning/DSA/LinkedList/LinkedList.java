@@ -7,7 +7,7 @@ public class LinkedList implements Iterable {
 	protected Node firstNode;
 	protected Node lastNode;
 	
-	LinkedList()
+	protected LinkedList()
 	{
 		
 	}
