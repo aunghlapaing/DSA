@@ -42,17 +42,21 @@ public class StackWithLinkedList extends LinkedList {
 			previous = current;
 			current = current.getNext();
 		}
-		if ( previous.next != null )
+		if ( previous != null )
 		{
 			previous.setNext(null);
 		}
+		
 		super.lastNode = previous;
+	
 	}
 	
-	public void pop() 
+	public int pop() 
 	{
+		int last = this.lastNode.getValue();
 		this.delete();	
 		this.size--;
+		return last;
 	
 	}
 

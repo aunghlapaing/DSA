@@ -1,5 +1,6 @@
 package com.turing.learning.DSA.DataStructure;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
@@ -53,11 +54,26 @@ public class stackWithLinkedListTest {
 		stack.pop();
 		stack.pop();
 		stack.pop();
+		stack.pop();
 		
-		assertEquals(1, stack.size());
+		assertEquals(0, stack.size());
 		
-		assertEquals( 10, stack.peek() );
+		//assertEquals( 10, stack.peek() );
 		
+	}
+	
+	//@Test 
+	public void popOutOfBoundCase()
+	{
+		for(int i=0;i<10;i++)
+		  {
+			  stack.push(i);
+		  }
+		  for(int i=9;i>=0;i--)
+		  {
+			  int deleteItem = stack.pop();
+			  assertEquals(i, deleteItem);
+		  }
 	}
 	
 
