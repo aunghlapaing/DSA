@@ -18,7 +18,7 @@ public class SortedList extends LinkedList {
 			{
 				if ( current.getValue() > item )
 				{
-					break;
+					break; //  It's gonna break the while loop as well
 				}
 				previous = current;
 				current = current.next;
@@ -34,7 +34,7 @@ public class SortedList extends LinkedList {
 			}
 			else
 			{
-				previous.setNext(insertNode);;
+				previous.setNext(insertNode);
 			}
 		}
 		
