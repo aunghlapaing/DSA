@@ -71,8 +71,8 @@ public class CircularQueueTest {
 		assertEquals( 1, size );
 		
 		queue.enqueue(400);
+
+		assertEquals( 2, queue.size() );	
 		assertEquals( 300, queue.peek() );
-		
-		assertEquals( 2, size );
 	}
 }
