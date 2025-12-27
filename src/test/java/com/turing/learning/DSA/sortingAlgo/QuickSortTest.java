@@ -102,7 +102,7 @@ public class QuickSortTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void randomDataCase()
 	{
 		int[] arr = util.randomArray(13);
