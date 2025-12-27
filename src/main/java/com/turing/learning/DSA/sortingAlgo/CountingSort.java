@@ -44,9 +44,12 @@ public class CountingSort {
 		/* sort */
 		for ( int i = size - 1; i >= 0; i-- )
 		{
-			sortedArray[count[arr[i] - 1]] = arr[i];
-			count[arr[i]]--;
+			int index = arr[i];
+			sortedArray[count[index] - 1] = arr[i];
+			count[index]--;
 		}
+		System.out.println("Sorted Array :" + Arrays.toString(sortedArray));
+		
 		
 		/* copy */
 		for ( int i = 0; i < arr.length; i++ )
@@ -54,7 +57,7 @@ public class CountingSort {
 			arr[i] = sortedArray[i];
 		}
 		
-		System.out.println("Sorted Array :" + Arrays.toString(sortedArray));
+		System.out.println("Sorted Array :" + Arrays.toString(arr));
 	}
 	
 
