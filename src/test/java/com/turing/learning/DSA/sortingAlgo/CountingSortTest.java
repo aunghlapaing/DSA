@@ -13,7 +13,7 @@ public class CountingSortTest {
 	@Test
 	public void findMaxItemCase()
 	{
-		int[] arr = {3, 2, 1, 4, 5, 6};
+		int[] arr = {3, 2, 1, 4, 5, 6, 0, 6};
 		
 	    int max = sortingAlgo.getMax(arr);
 		assertEquals( 6, max );
@@ -22,7 +22,7 @@ public class CountingSortTest {
 	@Test
 	public void sortCase()
 	{
-		int[] arr = {3, 2, 1, 4, 5, 6};
+		int[] arr = {3, 2, 1, 4, 5, 6, 0, 6, 10, 1000, 56};
 		
 		sortingAlgo.sort(arr);
 		
