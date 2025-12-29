@@ -9,6 +9,7 @@ public class BinaryTree {
 		this.root = node;
 	}
 
+	/*
 	public Node search(int item) 
 	{
 		Node current = this.root;
@@ -19,16 +20,45 @@ public class BinaryTree {
 			{
 				return current;
 			}
-			else if ( current.getValue() > item ) /* go left child */
+			else if ( current.getValue() > item ) 
 			{
+				//go left child 
 				current = current.getLeftChild();
 			}
-			else if ( current.getValue() < item ) /* go right child */
+			else if ( current.getValue() < item ) 
 			{
+				//go right child 
 				current = current.getRightChild();
 			}
 		}
 		return null;
+	}
+	*/
+	
+	public Node BinaryTreeSearch( int item, Node current )
+	{
+		if ( current == null )
+		{
+			return null;
+		}
+		if ( current.getValue() == item )
+		{
+			return current;
+		}
+		else if( current.getValue() > item )
+		{ 
+			return this.BinaryTreeSearch(item, current.getLeftChild());
+		}
+		else if ( current.getValue() < item )
+		{
+			return this.BinaryTreeSearch(item, current.getRightChild());
+		}
+		return null;
+	}
+	
+	public Node search(int item)
+	{	
+		return this.BinaryTreeSearch(item, root);
 	}
 
 }
