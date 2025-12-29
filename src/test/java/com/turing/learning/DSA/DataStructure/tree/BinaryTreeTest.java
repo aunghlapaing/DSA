@@ -19,13 +19,33 @@ public class BinaryTreeTest {
 	}
 	
 	@Test
-	public void binaryTreeSearchCase()
+	public void binaryTreeSearchRootCase()
 	{
 		BinaryTree tree = CreateTreeNode();
 		assertEquals( 10, tree.search(10).getValue());	/* root */
-		assertEquals( 5, tree.search(5).getValue());  /* leftChild */
-		assertEquals( 15, tree.search(15).getValue());	/* rightChild */
+	}
+	
+	@Test
+	public void binarySearchLeftCase()
+	{
+		BinaryTree tree = CreateTreeNode();
 		
+		assertEquals( 5, tree.search(5).getValue());  /* leftChild */	
+	}
+	
+	@Test
+	public void binarySearchRightCase()
+	{
+		BinaryTree tree = CreateTreeNode();
+		assertEquals( 15, tree.search(15).getValue());	/* rightChild */
+		assertEquals( null, tree.search(16));
+	}
+	
+	@Test
+	public void binarySearchNullCase()
+	{
+		BinaryTree tree = CreateTreeNode();
+		assertEquals( null, tree.search(16));
 	}
 
 }

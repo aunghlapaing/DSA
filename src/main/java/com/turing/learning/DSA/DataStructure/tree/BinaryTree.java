@@ -12,19 +12,20 @@ public class BinaryTree {
 	public Node search(int item) 
 	{
 		Node current = this.root;
+		
 		while ( current != null )
 		{
 			if (current.getValue() == item)
 			{
 				return current;
 			}
-			else if ( current.getValue() > item ) /* left child */
+			else if ( current.getValue() > item ) /* go left child */
 			{
-				return current = current.getLeftChild();
+				current = current.getLeftChild();
 			}
-			else if ( current.getValue() < item )
+			else if ( current.getValue() < item ) /* go right child */
 			{
-				return current = current.getRightChild();
+				current = current.getRightChild();
 			}
 		}
 		return null;
