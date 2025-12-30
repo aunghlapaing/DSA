@@ -61,4 +61,6 @@ public class BinaryTreeInsertTest {
 		assertEquals( 35, right.getRightChild().getValue()); 
 	}
 	
+	
+	
 }
