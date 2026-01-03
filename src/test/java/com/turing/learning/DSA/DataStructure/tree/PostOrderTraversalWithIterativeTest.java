@@ -20,7 +20,7 @@ public class PostOrderTraversalWithIterativeTest {
 	{
 		
 		tree.insert(15);
-		tree.insert(16);
+		tree.insert(30);
 		tree.insert(13);
 		
 		BinaryTreeTraversal postOrder = new PostOrderTraversalWithIterative(tree);
@@ -28,14 +28,14 @@ public class PostOrderTraversalWithIterativeTest {
 		Iterator<Node> iterator = postOrder.iterator();
 		
 		assertEquals( 13, iterator.next().getValue() );
-		assertEquals( 16, iterator.next().getValue() );
 		assertEquals( 15, iterator.next().getValue() );
+		assertEquals( 30, iterator.next().getValue() );
 		assertEquals( 17, iterator.next().getValue() );
 
 	}
 	
 	
-	//@Test
+	@Test
 	public void postOrderTraversalRightChildCase()
 	{
 		
@@ -56,16 +56,7 @@ public class PostOrderTraversalWithIterativeTest {
 	
 	@Test
 	public void postOrderTraversaLeftChildAndRightChildCase()
-	{
-		
-//		tree.insert(15);
-//		tree.insert(30);
-//		tree.insert(13);
-//		tree.insert(16);
-//		tree.insert(18);
-//		tree.insert(35);
-//		tree.insert(19);
-//		
+	{		
 		tree.insert(15);
 		tree.insert(13);
 		tree.insert(16);
@@ -73,11 +64,17 @@ public class PostOrderTraversalWithIterativeTest {
 		tree.insert(18);
 		tree.insert(35);
 		tree.insert(19);
+		tree.insert(10);
+		tree.insert(2);
+		tree.insert(1);
 		
 		BinaryTreeTraversal postOrder = new PostOrderTraversalWithIterative(tree);
 		
 		Iterator<Node> iterator = postOrder.iterator();
 		
+		assertEquals( 1, iterator.next().getValue() );
+		assertEquals( 2, iterator.next().getValue() );
+		assertEquals( 10, iterator.next().getValue() );
 		assertEquals( 13, iterator.next().getValue() );
 		assertEquals( 16, iterator.next().getValue() );
 		assertEquals( 15, iterator.next().getValue() );

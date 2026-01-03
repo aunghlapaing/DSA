@@ -30,23 +30,22 @@ public class InOrderTraversalWithIterative implements BinaryTreeTraversal{
 		Stack<Node> stack = new Stack<>();
 		
 		while ( current != null || !stack.isEmpty() )
-		{
-			while ( current != null )
 			{
-				stack.push(current);
-				current = current.getLeftChild();
+				while ( current != null )
+				{
+					stack.push(current);
+					current = current.getLeftChild();
+				}
+				
+				// pop and add to list
+				current = stack.pop();
+				list.add(current);
+				
+				System.out.println("Node :" + current.getValue());
+				
+				// traverse right child
+				current = current.getRightChild();
 			}
-			
-			// pop and add to list
-			current = stack.pop();
-			list.add(current);
-			
-			System.out.println("Node :" + current.getValue());
-			
-			// traverse right child
-			current = current.getRightChild();
-		}
-		
 	}
 
 	class TreeTraversal implements Iterator<Node>

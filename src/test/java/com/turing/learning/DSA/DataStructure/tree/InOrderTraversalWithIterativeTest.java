@@ -22,6 +22,7 @@ public class InOrderTraversalWithIterativeTest {
 		tree.insert(18);
 		tree.insert(35);
 		tree.insert(19);
+		tree.insert(2);
 	}
 	
 	@Test
@@ -31,6 +32,7 @@ public class InOrderTraversalWithIterativeTest {
 		
 		Iterator<Node> iterator = inOrder.iterator();
 		
+		assertEquals( 2, iterator.next().getValue() );
 		assertEquals( 13, iterator.next().getValue() );
 		assertEquals( 15, iterator.next().getValue() );
 		assertEquals( 16, iterator.next().getValue() );

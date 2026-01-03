@@ -38,15 +38,20 @@ public class PostOrderTraversalWithIterative implements BinaryTreeTraversal{
 			// push left child and traverse current
 			current = current.getLeftChild();
 			stack.push(current);
-			while ( current != null && ( current.getRightChild() != null || current.getRightChild() != null ) )
+			while ( current != null && ( current.getRightChild() != null || current.getLeftChild() != null ) )
 			{
-				stack.push(current.getRightChild());
+				if ( current.getRightChild() != null )
+				{
+					stack.push(current.getRightChild());
+				}
 				if ( current.getLeftChild() != null )
 				{
 					stack.push(current.getLeftChild());
 				}
 				current = current.getLeftChild();
 			}
+			
+			System.out.println( "Current after while:" + current.getValue() );
 			
 			// pop from stack until stack.size > 0 and change current
 			while ( stack.size() > 1 )
@@ -71,13 +76,17 @@ public class PostOrderTraversalWithIterative implements BinaryTreeTraversal{
 			
 			while( current != null && ( current.getLeftChild() != null || current.getRightChild() != null ) )
 			{
-				stack.push(current.getRightChild());
+				if ( current.getRightChild() != null )
+				{
+					stack.push(current.getRightChild());
+				}
 				if ( current.getLeftChild() != null )
 				{
 					stack.push(current.getLeftChild());
 				}
 				current = current.getLeftChild();
 			}
+			
 			// pop from stack until stack.size > 0 and change current
 			while ( stack.size() > 1 )
 			{
