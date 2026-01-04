@@ -50,7 +50,6 @@ public class InOrderTraversalWithIterative implements BinaryTreeTraversal{
 
 	class TreeTraversal implements Iterator<Node>
 	{
-		
 		int currentIndex = 0;
 		TreeTraversal()
 		{
@@ -67,7 +66,15 @@ public class InOrderTraversalWithIterative implements BinaryTreeTraversal{
 		@Override
 		public Node next() 
 		{
-			return list.get(currentIndex++);
+			if ( list.size() != 0 )
+			{
+				return list.get(currentIndex++);
+			}
+			else
+			{
+				throw new RuntimeException( "Index out of Bound." );
+			}
+			
 		}
 		
 	}

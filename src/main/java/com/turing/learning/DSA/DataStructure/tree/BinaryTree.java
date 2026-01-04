@@ -1,5 +1,9 @@
 package com.turing.learning.DSA.DataStructure.tree;
 
+import java.util.Stack;
+
+import com.sun.source.tree.Tree;
+
 public class BinaryTree {
 	
 	Node root;
@@ -126,17 +130,31 @@ public class BinaryTree {
 		return current;
 	}
 
-	public void deleteNode(int item) 
+	public void delete(int item) 
 	{
 		Node deleteNode =  search(item);
+		System.out.println("Delete Node: " + deleteNode.getValue());
 		
-		//System.out.println("Delete Node: " + deleteNode);
-		
-		if ( deleteNode.getLeftChild() == null && deleteNode.getRightChild() == null )
+		Stack<Node> stack = new Stack<>();
+		// get deleteNode parent
+		if ( deleteNode.getParent() != null )
 		{
-			deleteNode = deleteNode.getLeftChild();
+			System.out.println("DeleteNode's Parent: " + deleteNode.getParent().getValue());
+			stack.push(deleteNode.getParent());
+			
 		}
 		
-		System.out.println("Delete Node: " + root.getValue());
+		// single node
+		if ( deleteNode.getLeftChild() == null && deleteNode.getRightChild() == null )
+		{
+			deleteNode = null;
+			this.root = deleteNode;
+		}
+		else
+		{
+			Node deleteNodeParent = stack.pop();
+			
+		}
+		
 	}			
 }
