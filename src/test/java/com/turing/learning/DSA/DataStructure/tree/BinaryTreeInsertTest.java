@@ -5,16 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.Test;
 
 public class BinaryTreeInsertTest {
-	
-	Node root = new Node(17);
-	BinaryTree tree = new BinaryTree(root);
+
+	BinaryTree tree = new BinaryTree();
+	Node root = tree.insert(17);
 	
 	@Test
 	public void insertRootCase()
-	{	
-		tree.insert(15);
+	{
+		Node left = tree.insert(15);
 		
 		assertEquals( 15, root.getLeftChild().getValue()); 
+		assertEquals( 17, left.getParent().getValue() );
 	}
 	
 	@Test
@@ -60,7 +61,4 @@ public class BinaryTreeInsertTest {
 		
 		assertEquals( 35, right.getRightChild().getValue()); 
 	}
-	
-	
-	
 }
