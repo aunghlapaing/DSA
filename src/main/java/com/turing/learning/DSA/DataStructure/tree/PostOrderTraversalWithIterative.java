@@ -125,9 +125,5 @@ public class PostOrderTraversalWithIterative implements BinaryTreeTraversal{
 		{			
 			return list.get(currentIndex++);
 		}
-		
 	}
-	
-	
-
 }

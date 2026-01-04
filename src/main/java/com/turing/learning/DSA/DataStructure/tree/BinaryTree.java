@@ -91,4 +91,24 @@ public class BinaryTree {
 		
 		return insertNode;
 	}
+
+	public Node findMinNode() 
+	{
+		Node current = this.root;
+		while ( current.leftChild != null )
+		{
+			current = current.getLeftChild();
+		}
+		return current;
+	}
+
+	public Node findMaxNode() 
+	{
+		Node current = this.root;
+		while ( current.getRightChild() != null )
+		{
+			current = current.getRightChild();
+		}
+		return current;
+	}
 }

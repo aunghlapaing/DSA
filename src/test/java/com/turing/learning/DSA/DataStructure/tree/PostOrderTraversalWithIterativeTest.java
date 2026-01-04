@@ -15,7 +15,7 @@ public class PostOrderTraversalWithIterativeTest {
 		this.tree = new BinaryTree(root);
 	}
 	
-	//@Test
+	@Test
 	public void postOrderTraversalLeftChildCase()
 	{
 		
@@ -23,7 +23,8 @@ public class PostOrderTraversalWithIterativeTest {
 		tree.insert(30);
 		tree.insert(13);
 		
-		BinaryTreeTraversal postOrder = new PostOrderTraversalWithIterative(tree);
+		//BinaryTreeTraversal postOrder = new PostOrderTraversalWithIterative(tree);
+		BinaryTreeTraversal postOrder = new PostOrderTraversalWithTwoStack(tree);
 		
 		Iterator<Node> iterator = postOrder.iterator();
 		
@@ -31,6 +32,7 @@ public class PostOrderTraversalWithIterativeTest {
 		assertEquals( 15, iterator.next().getValue() );
 		assertEquals( 30, iterator.next().getValue() );
 		assertEquals( 17, iterator.next().getValue() );
+		assertEquals( false, iterator.hasNext());
 
 	}
 	
@@ -43,7 +45,9 @@ public class PostOrderTraversalWithIterativeTest {
 		tree.insert(35);
 		tree.insert(18);
 		
-		BinaryTreeTraversal postOrder = new PostOrderTraversalWithIterative(tree);
+		//BinaryTreeTraversal postOrder = new PostOrderTraversalWithIterative(tree);
+		BinaryTreeTraversal postOrder = new PostOrderTraversalWithTwoStack(tree);
+		
 		
 		Iterator<Node> iterator = postOrder.iterator();
 		
@@ -51,6 +55,7 @@ public class PostOrderTraversalWithIterativeTest {
 		assertEquals( 35, iterator.next().getValue() );
 		assertEquals( 30, iterator.next().getValue() );
 		assertEquals( 17, iterator.next().getValue() );
+		assertEquals( false, iterator.hasNext());
 		
 	}
 	
@@ -68,7 +73,8 @@ public class PostOrderTraversalWithIterativeTest {
 		tree.insert(2);
 		tree.insert(1);
 		
-		BinaryTreeTraversal postOrder = new PostOrderTraversalWithIterative(tree);
+		//BinaryTreeTraversal postOrder = new PostOrderTraversalWithIterative(tree);
+		BinaryTreeTraversal postOrder = new PostOrderTraversalWithTwoStack(tree);
 		
 		Iterator<Node> iterator = postOrder.iterator();
 		
@@ -83,6 +89,7 @@ public class PostOrderTraversalWithIterativeTest {
 		assertEquals( 35, iterator.next().getValue() );
 		assertEquals( 30, iterator.next().getValue() );
 		assertEquals( 17, iterator.next().getValue() );
+		assertEquals( false, iterator.hasNext());
 		
 	}
 	
