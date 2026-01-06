@@ -76,7 +76,6 @@ public class BinaryTree {
 		if ( root == null )
 		{
 			 this.root = insertNode;
-			 
 		}
 		else 
 		{
@@ -170,16 +169,13 @@ public class BinaryTree {
 		}
 	}
 
-	public Boolean hasDeleteNodeParent(Node deleteNode) {
-		
-		if ( deleteNode.getParent() == null )
-		{
-			return false;
-		}
-		return true;
+	public Boolean hasDeleteNodeParent(Node deleteNode) 
+	{
+		return deleteNode.getParent() != null;
 	}
 	
-	public boolean isLeaf(Node deleteNode) {
+	public boolean isLeaf(Node deleteNode) 
+	{
 		return deleteNode.getLeftChild() == null && deleteNode.getRightChild() == null;
 	}
 				
