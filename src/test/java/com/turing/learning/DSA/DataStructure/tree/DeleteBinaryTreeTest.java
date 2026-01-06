@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Iterator;
@@ -15,7 +16,19 @@ public class DeleteBinaryTreeTest {
 	BinaryTree tree = new BinaryTree();
 	
 	@Test
-	public void deleteNodeLeafCase()
+	public void isBinaryTreeTest()
+	{
+		tree.insert(17);
+		tree.insert(15);
+		tree.insert(30);
+		
+		BinaryTreeUtil util = new BinaryTreeUtil();
+
+		assertTrue( util.isBinaryTree(tree) );
+	}
+	
+	@Test
+	public void deleteNodeRootCase()
 	{
 		tree.insert(17);
 		
@@ -23,14 +36,9 @@ public class DeleteBinaryTreeTest {
 		
 		//assertEquals( null, tree.root );
 		
-		BinaryTreeTraversal inOrder = new InOrderTraversalWithIterative(tree);
-		Iterator<Node> iterator = inOrder.iterator();
+		BinaryTreeUtil util = new BinaryTreeUtil();
 		
-		RuntimeException except = assertThrows( RuntimeException.class, ()-> {
-			iterator.next();
-		} );
-		
-		assertTrue(except.getMessage().contains("Index out of Bound."));
+		assertFalse(util.isBinaryTree(tree));
 	}
 	
 	@Test
@@ -42,15 +50,29 @@ public class DeleteBinaryTreeTest {
 		
 		tree.delete(30);
 		
-		BinaryTreeTraversal inOrder = new InOrderTraversalWithIterative(tree);
-		Iterator<Node> iterator = inOrder.iterator();
+		assertNull(tree.search(30));
 		
-		// InOrder ( lRr )
-		// [ 15, 17 ]
+		BinaryTreeUtil util = new BinaryTreeUtil();
 		
-		assertEquals( 15, iterator.next().getValue() ); 
-		assertEquals( 15, iterator.next().getValue() ); 
-		assertFalse( iterator.hasNext()); 
+		assertTrue(util.isBinaryTree(tree));
 	}
+	
+	@Test
+	public void deleteLeftChildSimpleCase()
+	{
+		tree.insert(17);
+		tree.insert(15);
+		tree.insert(30);
+		
+		tree.delete(15);
+		
+		assertNull(tree.search(15));
+		
+		BinaryTreeUtil util = new BinaryTreeUtil();
+		
+		assertTrue(util.isBinaryTree(tree));
+	}
+	
+	
 
 }

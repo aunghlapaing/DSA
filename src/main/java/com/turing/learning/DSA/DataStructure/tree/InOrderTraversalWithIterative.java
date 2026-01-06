@@ -41,7 +41,7 @@ public class InOrderTraversalWithIterative implements BinaryTreeTraversal{
 				current = stack.pop();
 				list.add(current);
 				
-				System.out.println("Node :" + current.getValue());
+				//System.out.println("Node :" + current.getValue());
 				
 				// traverse right child
 				current = current.getRightChild();

@@ -16,8 +16,7 @@ public class BinaryTree {
 	BinaryTree(Node node)
 	{
 		this.root = node;
-	}
-	
+	}	
 	
 	/*
 	public Node search(int item) 
@@ -134,27 +133,54 @@ public class BinaryTree {
 	{
 		Node deleteNode =  search(item);
 		System.out.println("Delete Node: " + deleteNode.getValue());
+	
 		
-		Stack<Node> stack = new Stack<>();
-		// get deleteNode parent
-		if ( deleteNode.getParent() != null )
+		// root node has no child
+		if ( isLeaf(deleteNode) && !hasDeleteNodeParent(deleteNode) )
 		{
-			System.out.println("DeleteNode's Parent: " + deleteNode.getParent().getValue());
-			stack.push(deleteNode.getParent());
-			
+			this.root = null;
 		}
 		
-		// single node
-		if ( deleteNode.getLeftChild() == null && deleteNode.getRightChild() == null )
+		// has either left child or right child and has parent
+		else if ( !isLeaf(deleteNode) && hasDeleteNodeParent(deleteNode) ) 
 		{
-			deleteNode = null;
-			this.root = deleteNode;
+			// deleteNode has right child
+			if ( deleteNode.getRightChild() != null )
+			{
+				
+			}
+			// deleteNode has left child
+			else if ( deleteNode.getLeftChild() != null )
+			{
+				
+			}
 		}
-		else
+		// leaf node and has parent
+		else 
 		{
-			Node deleteNodeParent = stack.pop();
-			
+			Node deleteNodeParent = deleteNode.getParent();
+			if ( deleteNode.getValue() > deleteNodeParent.getValue() ) // right child
+			{
+				deleteNodeParent.rightChild = null;
+			}
+			else // left child
+			{
+				deleteNodeParent.leftChild = null;
+			}
 		}
+	}
+
+	public Boolean hasDeleteNodeParent(Node deleteNode) {
 		
-	}			
+		if ( deleteNode.getParent() == null )
+		{
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean isLeaf(Node deleteNode) {
+		return deleteNode.getLeftChild() == null && deleteNode.getRightChild() == null;
+	}
+				
 }
