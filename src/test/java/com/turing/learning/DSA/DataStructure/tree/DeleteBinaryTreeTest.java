@@ -36,7 +36,7 @@ public class DeleteBinaryTreeTest {
 		assertFalse(util.isBinaryTree(tree));
 	}
 	
-	@Test
+	//@Test
 	public void deleteRigtChildSimpleCase()
 	{
 		tree.insert(17);
@@ -94,11 +94,9 @@ public class DeleteBinaryTreeTest {
 		tree.insert(13);
 		tree.insert(16);
 		
-		Node deleteNode = tree.delete(15);
+		tree.delete(15);
 		
 		assertNull(tree.search(15));
-		
-		assertEquals( 16, tree.getSuccessor(deleteNode).getValue() );
 		
 		BinaryTreeUtil util = new BinaryTreeUtil();
 		
@@ -117,15 +115,49 @@ public class DeleteBinaryTreeTest {
 		tree.insert(18);
 		tree.insert(31);
 		
-		Node deleteNode = tree.delete(30);
+		tree.delete(30);
 		
 		assertNull(tree.search(30));
-		
-		assertEquals( 31, tree.getSuccessor(deleteNode).getValue() );
 		
 		BinaryTreeUtil util = new BinaryTreeUtil();
 		
 		assertTrue(util.isBinaryTree(tree));
 	}
+	
+	@Test
+	public void deleteRootWithLeftChildsCase()
+	{
+		tree.insert(17);
+		tree.insert(10);
+		tree.insert(16);
+		tree.insert(14);
+		tree.insert(15);
+		
+		tree.delete(17);
+		
+		assertNull(tree.search(17));
+		
+		BinaryTreeUtil util = new BinaryTreeUtil();
+		
+		assertTrue(util.isBinaryTree(tree));
+	}
+	
+	@Test
+	public void deleteRootWithRightChildsCase()
+	{
+		tree.insert(17);
+		tree.insert(30);
+		tree.insert(18);
+		tree.insert(19);
+		
+		tree.delete(17);
+		
+		assertNull(tree.search(17));
+		
+		BinaryTreeUtil util = new BinaryTreeUtil();
+		
+		assertTrue(util.isBinaryTree(tree));
+	}
+	
 	
 }

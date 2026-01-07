@@ -128,14 +128,13 @@ public class BinaryTree {
 	{
 		Node deleteNode =  search(item);
 		
-		//System.out.println("Delete Node: " + deleteNode.getValue());
+		System.out.println("Delete Node: " + deleteNode.getValue());
 	
-		// DeleteNode has no child and itself is root
-		if ( isLeaf(deleteNode) && !hasDeleteNodeParent(deleteNode) )
+		// DeleteNode has no child or has child and itself is root
+		if ( !hasDeleteNodeParent(deleteNode) )
 		{
-			this.root = null;
-		}
-		
+			deleteRoot(deleteNode);
+		}	
 		// DeleteNode can has either left child or right child / both and it has parent and itself is subtree
 		else if ( !isLeaf(deleteNode) && hasDeleteNodeParent(deleteNode) ) 
 		{
@@ -146,8 +145,46 @@ public class BinaryTree {
 		{
 			deleteLeaf(deleteNode);
 		}
-		
 		return deleteNode;
+	}
+
+	public void deleteRoot(Node deleteNode) {
+		if ( isLeaf(deleteNode) )
+		{
+			this.root = null;
+		}
+		else
+		{
+			Node successor = this.getSuccessor(deleteNode);
+			Node successorRightChild = successor.getRightChild();
+		
+			if ( successor.getValue() > deleteNode.getValue()  ) // right child
+			{
+				this.root = successor;
+
+				root.setRightChild(deleteNode.getRightChild());
+				
+				//System.out.println("Root Right Child : " + root.getRightChild().getValue());
+				
+				//System.out.println("successor: " + successor.getValue());
+				
+				//System.out.println("successor's Right child: " + successorRightChild.getValue());
+				
+				// check successor can have right child
+				if (successor.getRightChild() != null)
+				{
+					Node successorParent = successor.getParent();
+					//System.out.println("successor's parent : " + successorParent.getValue());
+					
+					successorParent.setLeftChild(successorRightChild);
+					//System.out.println("successor's parent left Child : " + successorParent.getLeftChild().getValue());
+				}
+			}
+			else
+			{
+				this.root = successor;
+			}
+		}
 	}
 
 	public void deleteSubTree(Node deleteNode) {
@@ -158,10 +195,11 @@ public class BinaryTree {
 		if ( deleteNode.getValue() > deleteNodeParent.getValue() ) 
 		{
 			deleteNodeParent.setRightChild(successor);
+			
 		}
 
 		// deleteNode is left child of subtree and need to set LeftChild
-		else
+		else 
 		{
 			deleteNodeParent.setLeftChild(successor);
 		}
@@ -183,17 +221,16 @@ public class BinaryTree {
 	{
 		Node successor = null;
 		
-		// deleteNode has right child and set the deleteNode right most left child as successor
-		if ( deleteNode.getRightChild() != null ) 
+		if ( deleteNode.getRightChild() != null )
 		{
 			successor = deleteNode.getRightChild();
 			while ( successor.getLeftChild() != null )
 			{
 				successor = successor.getLeftChild();
 			}
+			
+			System.out.println("After while successor : " + successor.getValue());
 		}
-        
-		// deleteNode only has left child and set it as successor
 		else
 		{
 			successor = deleteNode.getLeftChild();
