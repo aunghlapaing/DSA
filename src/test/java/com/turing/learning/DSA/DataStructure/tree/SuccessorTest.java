@@ -50,15 +50,14 @@ public class SuccessorTest {
 		tree.insert(19);
 		tree.insert(16);
 		tree.insert(18);
+		
 		/*
 		 *       20 
 		     15      30
 		 13     17
 		      16   19
 		         18
-		 * */
-		
-		
+		 * */		
 		Node deleteNode = tree.delete(17);
 		
 		assertEquals( 18, tree.getSuccessor(deleteNode).getValue() );

@@ -68,4 +68,64 @@ public class DeleteBinaryTreeTest {
 		assertTrue(util.isBinaryTree(tree));
 	}
 	
+	@Test
+	public void deleteSubTreeHasLeftChildCase()
+	{
+		tree.insert(17);
+		tree.insert(15);
+		tree.insert(30);
+		tree.insert(13);
+		
+		tree.delete(15);
+		
+		assertNull(tree.search(15));
+		
+		BinaryTreeUtil util = new BinaryTreeUtil();
+		
+		assertTrue(util.isBinaryTree(tree));
+	}
+	
+	@Test
+	public void deleteSubTreeHasRightChildCase()
+	{
+		tree.insert(17);
+		tree.insert(15);
+		tree.insert(30);
+		tree.insert(13);
+		tree.insert(16);
+		
+		Node deleteNode = tree.delete(15);
+		
+		assertNull(tree.search(15));
+		
+		assertEquals( 16, tree.getSuccessor(deleteNode).getValue() );
+		
+		BinaryTreeUtil util = new BinaryTreeUtil();
+		
+		assertTrue(util.isBinaryTree(tree));
+	}
+	
+	@Test
+	public void deleteSubTreeHasRightChildHasLeftChildCase()
+	{
+		tree.insert(17);
+		tree.insert(15);
+		tree.insert(30);
+		tree.insert(13);
+		tree.insert(16);
+		tree.insert(35);
+		tree.insert(18);
+		tree.insert(31);
+		
+		Node deleteNode = tree.delete(30);
+		
+		assertNull(tree.search(30));
+		
+		assertEquals( 31, tree.getSuccessor(deleteNode).getValue() );
+		
+		BinaryTreeUtil util = new BinaryTreeUtil();
+		
+		assertTrue(util.isBinaryTree(tree));
+	}
+	
 }

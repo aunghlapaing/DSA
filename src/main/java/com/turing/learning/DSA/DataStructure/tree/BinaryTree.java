@@ -127,21 +127,34 @@ public class BinaryTree {
 	public Node delete(int item) 
 	{
 		Node deleteNode =  search(item);
-		System.out.println("Delete Node: " + deleteNode.getValue());
-	
 		
-		// root node has no child
+		//System.out.println("Delete Node: " + deleteNode.getValue());
+	
+		// DeleteNode has no child and itself is root
 		if ( isLeaf(deleteNode) && !hasDeleteNodeParent(deleteNode) )
 		{
 			this.root = null;
 		}
 		
-		// has either left child or right child and has parent
+		// DeleteNode can has either left child or right child and it has parent and itself is subtree
 		else if ( !isLeaf(deleteNode) && hasDeleteNodeParent(deleteNode) ) 
 		{
-			//this.getSuccessor(deleteNode);
+			Node deleteNodeParent = deleteNode.getParent();
+			Node successor = this.getSuccessor(deleteNode);
+			
+			// deleteNode is right child of subtree and need to set RightChild
+			if ( deleteNode.getValue() > deleteNodeParent.getValue() ) 
+			{
+				deleteNodeParent.setRightChild(successor);
+			}
+		
+			// deleteNode is left child of subtree and need to set LeftChild
+			else
+			{
+				deleteNodeParent.setLeftChild(successor);
+			}
 		}
-		// leaf node and has parent
+		// DeleteNode is leaf node and it has parent
 		else 
 		{
 			Node deleteNodeParent = deleteNode.getParent();
