@@ -136,39 +136,47 @@ public class BinaryTree {
 			this.root = null;
 		}
 		
-		// DeleteNode can has either left child or right child and it has parent and itself is subtree
+		// DeleteNode can has either left child or right child / both and it has parent and itself is subtree
 		else if ( !isLeaf(deleteNode) && hasDeleteNodeParent(deleteNode) ) 
 		{
-			Node deleteNodeParent = deleteNode.getParent();
-			Node successor = this.getSuccessor(deleteNode);
-			
-			// deleteNode is right child of subtree and need to set RightChild
-			if ( deleteNode.getValue() > deleteNodeParent.getValue() ) 
-			{
-				deleteNodeParent.setRightChild(successor);
-			}
-		
-			// deleteNode is left child of subtree and need to set LeftChild
-			else
-			{
-				deleteNodeParent.setLeftChild(successor);
-			}
+			deleteSubTree(deleteNode);
 		}
 		// DeleteNode is leaf node and it has parent
 		else 
 		{
-			Node deleteNodeParent = deleteNode.getParent();
-			if ( deleteNode.getValue() > deleteNodeParent.getValue() ) // right child
-			{
-				deleteNodeParent.rightChild = null;
-			}
-			else // left child
-			{
-				deleteNodeParent.leftChild = null;
-			}
+			deleteLeaf(deleteNode);
 		}
 		
 		return deleteNode;
+	}
+
+	public void deleteSubTree(Node deleteNode) {
+		Node deleteNodeParent = deleteNode.getParent();
+		Node successor = this.getSuccessor(deleteNode);
+		
+		// deleteNode is right child of subtree and need to set RightChild
+		if ( deleteNode.getValue() > deleteNodeParent.getValue() ) 
+		{
+			deleteNodeParent.setRightChild(successor);
+		}
+
+		// deleteNode is left child of subtree and need to set LeftChild
+		else
+		{
+			deleteNodeParent.setLeftChild(successor);
+		}
+	}
+
+	public void deleteLeaf(Node deleteNode) {
+		Node deleteNodeParent = deleteNode.getParent();
+		if ( deleteNode.getValue() > deleteNodeParent.getValue() ) // right child
+		{
+			deleteNodeParent.rightChild = null;
+		}
+		else // left child
+		{
+			deleteNodeParent.leftChild = null;
+		}
 	}
 	
 	public Node getSuccessor(Node deleteNode)
