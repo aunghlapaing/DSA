@@ -1,9 +1,5 @@
 package com.turing.learning.DSA.DataStructure.tree;
 
-import java.util.Stack;
-
-import com.sun.source.tree.Tree;
-
 public class BinaryTree {
 	
 	Node root;
@@ -128,7 +124,7 @@ public class BinaryTree {
 		return current;
 	}
 
-	public void delete(int item) 
+	public Node delete(int item) 
 	{
 		Node deleteNode =  search(item);
 		System.out.println("Delete Node: " + deleteNode.getValue());
@@ -143,16 +139,7 @@ public class BinaryTree {
 		// has either left child or right child and has parent
 		else if ( !isLeaf(deleteNode) && hasDeleteNodeParent(deleteNode) ) 
 		{
-			// deleteNode has right child
-			if ( deleteNode.getRightChild() != null )
-			{
-				
-			}
-			// deleteNode has left child
-			else if ( deleteNode.getLeftChild() != null )
-			{
-				
-			}
+			//this.getSuccessor(deleteNode);
 		}
 		// leaf node and has parent
 		else 
@@ -167,6 +154,30 @@ public class BinaryTree {
 				deleteNodeParent.leftChild = null;
 			}
 		}
+		
+		return deleteNode;
+	}
+	
+	public Node getSuccessor(Node deleteNode)
+	{
+		Node successor = null;
+		
+		// deleteNode has right child and set the deleteNode right most left child as successor
+		if ( deleteNode.getRightChild() != null ) 
+		{
+			successor = deleteNode.getRightChild();
+			while ( successor.getLeftChild() != null )
+			{
+				successor = successor.getLeftChild();
+			}
+		}
+        
+		// deleteNode only has left child and set it as successor
+		else
+		{
+			successor = deleteNode.getLeftChild();
+		}
+		return successor;
 	}
 
 	public Boolean hasDeleteNodeParent(Node deleteNode) 

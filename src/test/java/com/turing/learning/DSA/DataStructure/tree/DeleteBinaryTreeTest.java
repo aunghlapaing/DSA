@@ -67,4 +67,5 @@ public class DeleteBinaryTreeTest {
 		
 		assertTrue(util.isBinaryTree(tree));
 	}
+	
 }
