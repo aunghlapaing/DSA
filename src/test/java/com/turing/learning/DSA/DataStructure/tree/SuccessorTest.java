@@ -29,13 +29,12 @@ public class SuccessorTest {
 	public void testSuccessorLeftChildCase()
 	{
 		tree.insert(17);
-		tree.insert(15);
+		Node node = tree.insert(15);
 		tree.insert(30);
 		tree.insert(13);
+
 		
-		Node deleteNode = tree.delete(15);
-		
-		assertEquals( 13, tree.getSuccessor(deleteNode).getValue() );
+		assertEquals( 13, tree.getSuccessor(node).getValue() );
 		
 	}
 	
@@ -58,7 +57,6 @@ public class SuccessorTest {
 		      16   19
 		         18
 		 * */		
-	//	Node deleteNode = tree.delete(17);
 		
 		assertEquals( 18, tree.getSuccessor(node).getValue() );
 		

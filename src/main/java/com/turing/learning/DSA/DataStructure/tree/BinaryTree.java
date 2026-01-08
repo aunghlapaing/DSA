@@ -228,12 +228,12 @@ public class BinaryTree {
 			{
 				successor = successor.getLeftChild();
 			}
-			
-			System.out.println("After while successor : " + successor.getValue());
+			//System.out.println("After while successor : " + successor.getValue());
 		}
 		else
 		{
 			successor = deleteNode.getLeftChild();
+			//System.out.println("After while successor : " + successor.getValue());
 		}
 		return successor;
 	}

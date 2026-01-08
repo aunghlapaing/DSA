@@ -25,7 +25,7 @@ public class DeleteBinaryTreeTest {
 	}
 	
 	@Test
-	public void deleteNodeRootCase()
+	public void deleteRootCase()
 	{
 		tree.insert(17);
 		
