@@ -40,10 +40,46 @@ public class BinaryTreeWithArrayTest {
 	{
 		binaryTree.insert(17);
 		binaryTree.insert(15);
-		binaryTree.insert(30);
 		int index = binaryTree.insert(13);
 		
 		assertEquals( 3, index );
+	}
+	
+	@Test
+	public void insertRigthChildLeftCase()
+	{
+		binaryTree.insert(17);
+		binaryTree.insert(30);
+		int index = binaryTree.insert(18);
+		
+		/*
+		 *       17 
+		 *         \
+		 *          30
+		 *          /
+		 *        18
+		 * */
+		
+		assertEquals(5, index );
+	}
+	
+	@Test
+	public void insertLeftCase()
+	{
+		binaryTree.insert(17);
+		binaryTree.insert(30);
+		binaryTree.insert(18);
+		int index = binaryTree.insert(15);
+		
+		/*
+		 *       17 
+		 *         \
+		 *          30
+		 *          /
+		 *        18
+		 * */
+		
+		assertEquals(1, index );
 	}
 
 }
