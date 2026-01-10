@@ -22,4 +22,63 @@ public class BinaryTreeWithArray {
 		return index;	
 	}
 
+	public int search(int item) 
+	{
+		int index = 0;
+		Integer treeValue = tree[index];
+		int current = integerToInt(treeValue);
+		
+		if ( current != 0 )
+		{
+			while(current != item && index <= tree.length)
+			{
+				if ( current > item)
+				{
+					index = ( index * 2 ) + 1;
+					if ( index <= tree.length )
+					{
+						current = integerToInt(tree[index]);
+					}
+					
+				}
+				else
+				{
+					index = ( index *2 ) + 2;
+					if ( index <= tree.length )
+					{
+						current = integerToInt(tree[index]);
+					}
+				}
+			}
+			
+			// check tree[index] with item
+			if ( current == item )
+			{
+				return index;
+			}
+			else
+			{
+				return -1;
+			}
+			
+		}
+		else
+		{
+			throw new RuntimeException( "Tree is Empty." );
+		}
+	}
+
+	public int integerToInt(Integer treeValue) {
+		int current;
+		if ( treeValue == null )
+		{
+			current = 0;
+		}
+		else
+		{
+			current = treeValue;
+		}
+		return current;
+	}
+
 }

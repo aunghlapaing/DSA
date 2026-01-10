@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
 
-public class BinaryTreeWithArrayTest {
+public class BinaryTreeWithArrayInsertTest {
 	
 	BinaryTreeWithArray binaryTree = new BinaryTreeWithArray();
 	@Test
