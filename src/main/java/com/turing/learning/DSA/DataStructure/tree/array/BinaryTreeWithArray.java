@@ -35,19 +35,13 @@ public class BinaryTreeWithArray {
 				if ( current > item)
 				{
 					index = ( index * 2 ) + 1;
-					if ( index <= tree.length )
-					{
-						current = integerToInt(tree[index]);
-					}
+					current = notIndexOutofBound(index, current);
 					
 				}
 				else
 				{
 					index = ( index *2 ) + 2;
-					if ( index <= tree.length )
-					{
-						current = integerToInt(tree[index]);
-					}
+					current = notIndexOutofBound(index, current);
 				}
 			}
 			
@@ -66,6 +60,14 @@ public class BinaryTreeWithArray {
 		{
 			throw new RuntimeException( "Tree is Empty." );
 		}
+	}
+
+	public int notIndexOutofBound(int index, int current) {
+		if ( index <= tree.length )
+		{
+			current = integerToInt(tree[index]);
+		}
+		return current;
 	}
 
 	public int integerToInt(Integer treeValue) {
