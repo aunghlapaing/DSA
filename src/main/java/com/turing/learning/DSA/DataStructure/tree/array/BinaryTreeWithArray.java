@@ -30,13 +30,12 @@ public class BinaryTreeWithArray {
 		
 		if ( current != 0 )
 		{
-			while(current != item && index <= tree.length)
+			while ( current != item && index <= tree.length )
 			{
-				if ( current > item)
+				if ( current > item )
 				{
 					index = ( index * 2 ) + 1;
 					current = notIndexOutofBound(index, current);
-					
 				}
 				else
 				{
@@ -54,7 +53,6 @@ public class BinaryTreeWithArray {
 			{
 				return -1;
 			}
-			
 		}
 		else
 		{

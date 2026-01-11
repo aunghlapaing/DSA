@@ -60,10 +60,10 @@ public class BinaryTreeWithArraySearchTest {
 		
 		/*
 		 * 		     17
-		 *       /       \
-		 *     15          30 
-		 *    /  \       /    \
-		 *       16    18      35
+		 *        /      \
+		 *      15        30 
+		 *     /  \      /  \
+		 *        16    18   35
 		 * 
 		 * */
 		
