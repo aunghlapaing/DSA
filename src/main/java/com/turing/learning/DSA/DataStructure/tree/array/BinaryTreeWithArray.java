@@ -27,37 +27,31 @@ public class BinaryTreeWithArray {
 		int index = 0;
 		Integer treeValue = tree[index];
 		int current = integerToInt(treeValue);
-		
-		if ( current != 0 )
+
+		while ( current != item && index <= tree.length - 1 )
 		{
-			while ( current != item && index <= tree.length )
+			if ( current > item )
 			{
-				if ( current > item )
-				{
-					index = ( index * 2 ) + 1;
-					current = notIndexOutofBound(index, current);
-				}
-				else
-				{
-					index = ( index *2 ) + 2;
-					current = notIndexOutofBound(index, current);
-				}
-			}
-			
-			// check tree[index] with item
-			if ( current == item )
-			{
-				return index;
+				index = ( index * 2 ) + 1;
+				current = notIndexOutofBound(index, current);
 			}
 			else
 			{
-				return -1;
+				index = ( index *2 ) + 2;
+				current = notIndexOutofBound(index, current);
 			}
+		}
+		
+		// check tree[index] with item
+		if ( current == item )
+		{
+			return index;
 		}
 		else
 		{
-			throw new RuntimeException( "Tree is Empty." );
+			return -1;
 		}
+		
 	}
 
 	public int notIndexOutofBound(int index, int current) {
@@ -81,4 +75,21 @@ public class BinaryTreeWithArray {
 		return current;
 	}
 
+	public Integer delete(int item) 
+	{
+		int deleteItemIndex = this.search(item);
+
+		if ( deleteItemIndex == -1 )
+		{
+			return null;
+		}
+		else
+		{
+			Integer deleteItem = this.tree[deleteItemIndex];
+			this.tree[deleteItemIndex] = null;
+			
+			return deleteItem;
+		}
+	
+	}
 }

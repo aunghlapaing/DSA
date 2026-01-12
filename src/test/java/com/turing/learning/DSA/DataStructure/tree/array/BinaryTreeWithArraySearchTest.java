@@ -12,11 +12,11 @@ public class BinaryTreeWithArraySearchTest {
 	@Test
 	public void searchTreeEmptyCase()
 	{
-		RuntimeException except = assertThrows ( RuntimeException.class , ()->{
-			binaryTree.search(17);
-		} );
 		
-		assertEquals("Tree is Empty.", except.getMessage());
+		int index = binaryTree.search(17);
+	
+		
+		assertEquals(-1, index);
 	}
 	
 	@Test
