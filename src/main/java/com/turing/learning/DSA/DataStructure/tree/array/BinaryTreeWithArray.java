@@ -1,7 +1,7 @@
 package com.turing.learning.DSA.DataStructure.tree.array;
 
 public class BinaryTreeWithArray {
-	Integer[] tree = new Integer[20];	
+	public Integer[] tree = new Integer[20];	
 	
 	public int insert(int item) 
 	{
