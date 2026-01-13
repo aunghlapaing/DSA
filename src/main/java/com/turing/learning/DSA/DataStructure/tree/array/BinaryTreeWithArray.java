@@ -1,5 +1,7 @@
 package com.turing.learning.DSA.DataStructure.tree.array;
 
+import java.util.Arrays;
+
 public class BinaryTreeWithArray {
 	public Integer[] tree = new Integer[20];	
 	
@@ -55,7 +57,7 @@ public class BinaryTreeWithArray {
 	}
 
 	public int notIndexOutofBound(int index, int current) {
-		if ( index <= tree.length )
+		if ( index <= tree.length - 1 )
 		{
 			current = integerToInt(tree[index]);
 		}
@@ -88,8 +90,68 @@ public class BinaryTreeWithArray {
 			Integer deleteItem = this.tree[deleteItemIndex];
 			this.tree[deleteItemIndex] = null;
 			
-			return deleteItem;
+			// check root node?
+			if (deleteItemIndex != 0)
+			{
+				// re-arrange binary tree property
+				int parentIndex = ( (deleteItemIndex - 1) / 2 );
+				
+				// delete node has left child
+				if ( this.tree[parentIndex] > deleteItem )
+				{
+					shiftLeftChildPosition(deleteItemIndex);
+				}
+				
+				// delete node have right child
+				else if ( this.tree[parentIndex] < deleteItem )
+				{
+					shiftRightChildPosition(deleteItemIndex);
+				}
+			}
+			
+			System.out.println( "TREE After DELETE :" + Arrays.toString(tree) );
+			return deleteItem;		
 		}
 	
+	}
+
+	public void shiftRightChildPosition(int deleteItemIndex) {
+		int rightIndex = ( deleteItemIndex * 2 ) + 2;
+		if( this.tree[rightIndex] != null )
+		{
+			// change position
+			int temp = deleteItemIndex;
+			while ( this.tree[rightIndex] != null )
+			{
+				this.tree[temp] = this.tree[rightIndex];
+				System.out.println( "Right Index and its value :" + temp + "," + this.tree[rightIndex]);
+				
+				temp = rightIndex;
+				//System.out.println( "Temp Index :" + temp );
+				rightIndex = ( rightIndex * 2 ) + 2;
+			}
+			this.tree[temp] = null;
+			
+		}
+	}
+
+	public void shiftLeftChildPosition(int deleteItemIndex) {
+		int leftIndex = ( deleteItemIndex * 2 ) + 1;
+		if( this.tree[leftIndex] != null )
+		{
+			// change position
+			int temp = deleteItemIndex;
+			while ( this.tree[leftIndex] != null )
+			{
+				this.tree[temp] = this.tree[leftIndex];
+				System.out.println( "Left Index and its value :" + temp + "," + this.tree[leftIndex]);
+				
+				temp = leftIndex;
+				//System.out.println( "Temp Index :" + temp );
+				leftIndex = ( leftIndex * 2 ) + 1;
+			}
+			this.tree[temp] = null;
+			
+		}
 	}
 }

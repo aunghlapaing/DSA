@@ -35,7 +35,7 @@ public class isBinaryTreeTest {
 		tree.insert(16);
 		tree.insert(18);
 		tree.insert(35);
-		tree.insert(2);
+		tree.insert(12);
 		
 		Util util = new Util(tree);
 		assertTrue( util.isBinaryTree() );
@@ -45,6 +45,13 @@ public class isBinaryTreeTest {
 	public void isBSTSortedArrayEmptyCase()
 	{
 		Util util = new Util(tree);
+		assertFalse( util.isBinaryTree() );
+	}
+	
+	//@Test
+	public void rightChildisNullCase()
+	{
+		Util util = new Util();
 		assertFalse( util.isBinaryTree() );
 	}
 	
