@@ -12,7 +12,7 @@ public class BinaryTreeWithArrayDeleteTest {
 	BinaryTreeWithArray tree = new BinaryTreeWithArray();
 
 	
-	//@Test
+	@Test
 	public void deleteEmptyCase()
 	{
 		Integer item = tree.delete(17);
@@ -20,7 +20,7 @@ public class BinaryTreeWithArrayDeleteTest {
 		assertNull(item);
 	}
 	
-	//@Test
+	@Test
 	public void deleteRootCase()
 	{
 		tree.insert(17);
@@ -36,7 +36,7 @@ public class BinaryTreeWithArrayDeleteTest {
 		
 	}
 	
-	//@Test
+	@Test
 	public void deleteLeftChildCase()
 	{
 		tree.insert(17);
@@ -71,7 +71,7 @@ public class BinaryTreeWithArrayDeleteTest {
 		assertTrue( util.isBinaryTree());
 	}
 	
-	//@Test
+	@Test
 	public void deleteRightChildCase()
 	{
 		tree.insert(17);
@@ -88,7 +88,7 @@ public class BinaryTreeWithArrayDeleteTest {
 		assertTrue( util.isBinaryTree());
 	}
 	
-	//@Test
+	@Test
 	public void deleteRightChildHasOnlyRightChildCase()
 	{
 		tree.insert(17);
@@ -106,7 +106,7 @@ public class BinaryTreeWithArrayDeleteTest {
 		assertTrue( util.isBinaryTree());
 	}
 	
-	//@Test
+	@Test
 	public void deleteRightChildHasBothCase()
 	{
 		tree.insert(17);

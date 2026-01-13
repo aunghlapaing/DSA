@@ -24,9 +24,6 @@ public class Util {
 	
 	public boolean isBinaryTree() 
 	{
-		//String result = Arrays.toString(treeList);
-		//System.out.println( "TREE BEFORE TRAVERSAL :" + result );
-		
 		int index = 0;
 
 		// empty case
@@ -41,20 +38,13 @@ public class Util {
 		{
 			return false;
 		}
-		
 	}
 
 	private void inOrderTraversal(int index) 
-	{
-		// remove null from tree
-		Integer[] trimTree = this.removeNull(binaryTree.tree);
-		//Integer[] trimTree = this.removeNull(treeList);
-		
-		System.out.println("Trim Tree :" + Arrays.toString(trimTree) );
-		
-		if ( index <= trimTree.length - 1 )
+	{	
+		if ( index <= this.binaryTree.tree.length - 1 )
 		{
-			Integer current = trimTree[index];
+			Integer current = this.binaryTree.tree[index];
 			
 			if ( current != null )
 			{
