@@ -2,6 +2,7 @@ package com.turing.learning.DSA.DataStructure.tree.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class Util {
 	
@@ -27,18 +28,34 @@ public class Util {
 		//System.out.println( "TREE BEFORE TRAVERSAL :" + result );
 		
 		int index = 0;
-		inOrderTraversal( index );
-	
-		System.out.println( "TREE AFTER TRAVERSAL :" + list.toString() );
-		return isSortedArray(list);
+
+		// empty case
+		if ( this.binaryTree.tree[index] != null )
+		{
+			inOrderTraversal( index );
+			
+			System.out.println( "TREE AFTER TRAVERSAL :" + list.toString() );
+			return isSortedArray(list);
+		}
+		else
+		{
+			return false;
+		}
+		
 	}
 
 	private void inOrderTraversal(int index) 
 	{
-		if ( index <= treeList.length - 1 )
+		// remove null from tree
+		Integer[] trimTree = this.removeNull(binaryTree.tree);
+		//Integer[] trimTree = this.removeNull(treeList);
+		
+		System.out.println("Trim Tree :" + Arrays.toString(trimTree) );
+		
+		if ( index <= trimTree.length - 1 )
 		{
-			Integer current = this.binaryTree.tree[index];
-			//Integer current = treeList[index];
+			Integer current = trimTree[index];
+			
 			if ( current != null )
 			{
 				this.inOrderTraversal((index * 2) + 1);
@@ -76,6 +93,31 @@ public class Util {
 		
 		return false;
 		
+	}
+	
+	public Integer[] removeNull(Integer[] tree)
+	{
+		int count = 0;
+		for ( int i = 0 ; i < tree.length; i ++ )
+		{
+			if ( tree[i] != null )
+			{
+				count++;
+			}	
+		}
+		
+		Integer[] trimTree = new Integer[count];
+		int index = 0;
+		
+		for ( int i = 0; i < tree.length; i++ )
+		{
+			if ( tree[i] != null )
+			{
+				trimTree[index++] = tree[i];
+			}
+		}
+		
+		return trimTree;
 	}
 
 }

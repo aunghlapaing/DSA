@@ -48,11 +48,18 @@ public class isBinaryTreeTest {
 		assertFalse( util.isBinaryTree() );
 	}
 	
-	//@Test
+	@Test
 	public void rightChildisNullCase()
 	{
-		Util util = new Util();
-		assertFalse( util.isBinaryTree() );
+		tree.insert(17);
+		tree.insert(13);
+		tree.insert(10);
+		tree.insert(16);
+		
+		//17, 13, 10, 16
+		
+		Util util = new Util(tree);
+		assertTrue( util.isBinaryTree() );
 	}
 	
 }
