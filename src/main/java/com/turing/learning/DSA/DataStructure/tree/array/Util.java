@@ -12,11 +12,11 @@ public class Util {
 		this.binaryTree = tree;
 	}
 	
-	public ArrayList<Integer> isBinaryTree() 
+	public boolean isBinaryTree() 
 	{
 		int index = 0;
 		inOrderTraversal( index );
-		return list;
+		return isSortedArray(list);
 	}
 
 	private void inOrderTraversal(int index) 
@@ -36,6 +36,28 @@ public class Util {
 		{
 			this.inOrderTraversal(( index * 2 ) + 2);
 		}
+	}
+	
+	public boolean isSortedArray(ArrayList<?> list)
+	{
+		// sort check
+		Integer[] arr = new Integer[list.size()];
+		list.toArray(arr);
+		
+		if ( arr.length > 0 )
+		{
+			for ( int i = 0; i < arr.length - 1; i++ )
+			{
+				if ( arr[i] > arr[i+1] )
+				{
+					return false;
+				}			
+			}
+			return true;
+		}
+		
+		return false;
+		
 	}
 
 }
