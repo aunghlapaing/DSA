@@ -41,7 +41,7 @@ public class Util {
 	}
 
 	private void inOrderTraversal(int index) 
-	{	
+	{
 		if ( index <= this.binaryTree.tree.length - 1 )
 		{
 			Integer current = this.binaryTree.tree[index];
