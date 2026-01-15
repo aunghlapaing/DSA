@@ -5,10 +5,23 @@ import java.util.ArrayList;
 public class Node {
 	
 	Node parent;
-	public Integer[] key = new Integer[3];	
+	Integer[] keys = new Integer[3];
 	ArrayList<Node> child = new ArrayList<>();
 	
-	int treeType = 4; // 2 - 3 - 4
-	public int noOfkey = 1; // 
+	int order = 4; // to compare with noOfNode to know tree type;
+	int noOfNode = 1; // will increase into 2-3 later
+	
+	public Node()
+	{
+		
+	}
+	
+	public Node(int item)
+	{
+		Node node = new Node();
+		node.keys[0] = item;
+	}
+	
+	
 
 }

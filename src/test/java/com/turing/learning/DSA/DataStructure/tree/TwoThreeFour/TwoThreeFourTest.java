@@ -1,19 +1,18 @@
 package com.turing.learning.DSA.DataStructure.tree.TwoThreeFour;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 
-public class TwoThreeFourInsertTest {
+public class TwoThreeFourTest {
 	
 	@Test
-	public void insertRootNodeCase()
+	public void insertRootCase()
 	{
 		TwoThreeFourTree tree = new TwoThreeFourTree();
 		
 		Node node = tree.insert(15);
 		
-		assertEquals( 15, node.key[0] );
+		// behaviour after insert
+		assertEquals(  )
 	}
 
 }
