@@ -64,7 +64,7 @@ public class TwoThreeFourTest {
 	
 	
 	@Test
-	public void insertRootOutOfBoundCase()
+	public void insertRootSplitCase()
 	{
 		tree.insert(15);
 		tree.insert(20);
@@ -85,7 +85,7 @@ public class TwoThreeFourTest {
 	
 	
 	@Test
-	public void insertThreeTreeRightMostCase()
+	public void insertTwoTreeRightMostCase()
 	{
 		tree.insert(15);
 		tree.insert(20);
@@ -113,7 +113,7 @@ public class TwoThreeFourTest {
 	}
 	
 	@Test
-	public void insertThreeTreeLefttMostCase()
+	public void insertTwoTreeLefttMostCase()
 	{
 		tree.insert(15);
 		tree.insert(20);
@@ -140,7 +140,36 @@ public class TwoThreeFourTest {
 		assertEquals( 2, parent.noOfNode );
 	}
 
+	@Test
+	public void insertTwoTreeRigthMostSplitCase()
+	{
+		tree.insert(15);
+		tree.insert(20);
+		tree.insert(10);
+		tree.insert(25);
+		tree.insert(30);
+		Node node = tree.insert(33);
+		
+		/*
+		 *        [15]
+		 *   [10]     [20, 25, 30] <- 35
+		 * 
+		 * */
+		
+		Node parent = node.parent;
+		
+		Node child0 = parent.child.get(0);
+		Node child1 = parent.child.get(1);
+		Node child2 = parent.child.get(2);
+		
+		
+		assertEquals( 15, parent.keys[0] );
+		assertEquals( 25, parent.keys[1] );
+		assertEquals( 10, child0.keys[0] );
+		assertEquals( 20, child1.keys[0] );
+		assertEquals( 30, child2.keys[0] );
+		assertEquals( 33, child2.keys[1] );
+		assertEquals( 3, parent.noOfNode );
+	}
 	
-	
-
 }
