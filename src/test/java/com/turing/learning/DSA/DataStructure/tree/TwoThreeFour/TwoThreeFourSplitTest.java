@@ -17,7 +17,7 @@ public class TwoThreeFourSplitTest {
 		Node node = tree.insert(25);
 		
 		Node parent = new Node();
-		parent = node;
+		parent = node.parent;
 
 		Node child0 = parent.child.get(0);
 		Node child1 = parent.child.get(1);

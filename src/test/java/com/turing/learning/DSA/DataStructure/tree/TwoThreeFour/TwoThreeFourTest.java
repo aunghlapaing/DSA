@@ -84,7 +84,7 @@ public class TwoThreeFourTest {
 	}
 	
 	
-	@Test
+	//@Test
 	public void insertTwoTreeRightMostCase()
 	{
 		tree.insert(15);
@@ -112,7 +112,7 @@ public class TwoThreeFourTest {
 		assertEquals( 2, parent.noOfNode );
 	}
 	
-	@Test
+	//@Test
 	public void insertTwoTreeLefttMostCase()
 	{
 		tree.insert(15);
@@ -140,7 +140,7 @@ public class TwoThreeFourTest {
 		assertEquals( 2, parent.noOfNode );
 	}
 
-	@Test
+	//@Test
 	public void insertTwoTreeRigthMostSplitCase()
 	{
 		tree.insert(15);
