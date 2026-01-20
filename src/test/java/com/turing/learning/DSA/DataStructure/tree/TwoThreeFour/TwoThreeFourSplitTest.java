@@ -21,14 +21,12 @@ public class TwoThreeFourSplitTest {
 
 		Node child0 = parent.child.get(0);
 		Node child1 = parent.child.get(1);
-		
-		
-			
+	
 		assertEquals( 15, parent.keys[0] );
 		assertEquals( 10, child0.keys[0] );
 		assertEquals( 20, child1.keys[0] );
 		assertEquals( 25, child1.keys[1] );
-		assertEquals( 2, node.noOfNode );
+		assertEquals( 3, node.noOfNode );
 	}
 
 }

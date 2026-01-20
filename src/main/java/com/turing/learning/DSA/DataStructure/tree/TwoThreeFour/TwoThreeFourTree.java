@@ -13,7 +13,8 @@ public class TwoThreeFourTree {
 		}
 		else
 		{
-			return current.insertTree( current, item );  
+			current = current.insertTree( current, item );
+			return current;  
 		}
 		return current;
 	}

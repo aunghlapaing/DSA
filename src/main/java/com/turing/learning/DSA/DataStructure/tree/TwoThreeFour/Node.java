@@ -4,18 +4,17 @@ import java.util.ArrayList;
 
 public class Node {
 
-	public Node current;
 	public Node parent;
-
-	public Node getParent() {
+	
+	public Node getParent() 
+	{
 		return parent;
 	}
 
-
-	public void setParent(Node parent) {
+	public void setParent(Node parent) 
+	{
 		this.parent = parent;
 	}
-
 
 	public Integer[] keys = new Integer[3];
 	public ArrayList<Node> child = new ArrayList<>();
@@ -24,54 +23,54 @@ public class Node {
 	public int noOfNode = 1;
 	
 	
-	public Node insertTree(Node current, int item) 
+	public Node insertTree(Node node, int item) 
 	{
-		if ( current.noOfNode != ORDER )
+		if ( node.noOfNode != ORDER )
 		{
 			// valid insert
-			return validInsert(current, item);
+			return validInsert(node, item);
 		}
 		else
 		{		
 			// need to split
 			// System.out.println("Current node is full.");
-			if ( current.parent == null )
+			if ( node.parent == null )
 			{
-				Node splitReturnParent = split(current);
+				Node splitReturnParent = split(node);
 				
 				// find index and insert
-				Node nodeToInsert = current.findIndexInsert( splitReturnParent, item );
-				current = insertTree(nodeToInsert, item);
-				//System.out.println( "Current Parent:" + current.parent.keys[0] );
-				return current;
+				Node nodeToInsert = node.findIndexInsert( splitReturnParent, item );
+				
+				return insertTree( nodeToInsert, item );
 			}
 			else
 			{
-				
+				// current node parent is not null;
+				System.out.println("Current parent node is not null.");
 			}
 			
 		}
-		return current;
+		return node;
 	}
 
 
-	public Node validInsert(Node current, int item) {
+	public Node validInsert(Node node, int item) {
 		int index = 0;
-		while ( current.keys[index] != null && index != current.keys.length )
+		while ( node.keys[index] != null && index != node.keys.length )
 		{
-			if ( current.keys[index] > item )
+			if ( node.keys[index] > item )
 			{
 				break;
 			}
 			index++;
 		}
-		for ( int i = current.keys.length - 1; i > index; i-- )
+		for ( int i = node.keys.length - 1; i > index; i-- )
 		{
-			current.keys[i] = current.keys[i-1];
+			node.keys[i] = node.keys[i-1];
 		}
-		current.keys[index] = item;
-		current.noOfNode++;
-		return current;
+		node.keys[index] = item;
+		node.noOfNode++;
+		return node;
 	}
 
 
@@ -110,18 +109,20 @@ public class Node {
 
 
 	public Node split(Node current) {
-		Node parent = new Node();
-		parent.keys[0] = current.keys[1];
+		Node currentParent = new Node();
+		currentParent.insertTree(currentParent, current.keys[1]);
 		
 		Node child0 = new Node();
-		child0.keys[0] = current.keys[0];
-		parent.child.add(child0);
+		child0.insertTree(child0,current.keys[0]);
+		child0.setParent(currentParent);
+		currentParent.child.add(child0);
 		
 		Node child1 = new Node();
-		child1.keys[0] = current.keys[2];
-		parent.child.add(child1);
+		child1.insertTree(child1, current.keys[2]);
+		child1.setParent(currentParent);
+		currentParent.child.add(child1);
 		
-		return parent;
+		return currentParent;
 	}
 	
 	
