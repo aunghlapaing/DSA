@@ -47,10 +47,71 @@ public class Node {
 			{
 				// current node parent is not null;
 				System.out.println("Current parent node is not null.");
+				Node splitReturnParent = split( node );
+				Node currentParent = node.getParent();
+				if ( currentParent.noOfNode == 2 )
+				{
+					// find the current index of the it parent and remove
+					int indexToRemove = findCurrentIndexToRemoveFromParent( node, item ); 
+					currentParent.child.remove(indexToRemove);
+					
+					// add split return parent into current parent.
+					currentParent.insertTree(currentParent, splitReturnParent.keys[0]);
+					
+					// re-arrange child currentParent as three tree type
+					setThreeTreeType(splitReturnParent, currentParent, indexToRemove);
+					
+					// find index to insert
+					Node nodeToInsert = this.findIndexInsert(currentParent, item);
+					
+					// insert
+					return insertTree( nodeToInsert, item );
+				}
 			}
 			
 		}
 		return node;
+	}
+
+	public void setThreeTreeType(Node splitReturnParent, Node currentParent, int indexToRemove) {
+		if ( indexToRemove == 1 )
+		{
+			Node child1 = new Node();
+			child1.setParent(currentParent);
+			child1.insertTree(child1, splitReturnParent.keys[0]);
+			
+			Node child2 = new Node();
+			child2.setParent(currentParent);
+			child2.insertTree(child2, splitReturnParent.keys[2]);
+		}
+		else if ( indexToRemove == 0 )
+		{
+			Node child0 = new Node();
+			child0.setParent(currentParent);
+			child0.insertTree(child0, splitReturnParent.keys[0]);
+			
+			Node child1 = new Node();
+			child1.setParent(currentParent);
+			child1.insertTree(child1, splitReturnParent.keys[2]);
+			
+			Node child2 = new Node();
+			child2.setParent(currentParent);
+			child2.insertTree(child0, splitReturnParent.keys[1]);
+		}
+	}
+
+	public int findCurrentIndexToRemoveFromParent(Node node, int item) {
+		Node currentParent = node.getParent();
+		int index = 0;
+		while ( currentParent.keys[index] != null && index != currentParent.keys.length )
+		{
+			if ( currentParent.keys[index] > item )
+			{
+				break;
+			}
+			index++;
+		}
+		return index;
 	}
 
 
