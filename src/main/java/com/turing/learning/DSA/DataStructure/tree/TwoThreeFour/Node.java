@@ -76,11 +76,53 @@ public class Node {
 				else if ( currentParent.noOfNode == 3 )
 				{
 					System.out.println("Current Parent is three tree.");
+					
+					System.out.println("Split return parent value: " + splitReturnParent.keys[0]);
+					
+					// find the current index of the it parent and remove
+					int indexToRemove = findCurrentIndexToRemoveFromParent( node, item ); 
+					currentParent.child.remove(indexToRemove);
+					
+					System.out.println("Index to remove :" + indexToRemove);
+					
+					// add split return parent into current parent.
+					currentParent.insertTree(currentParent, splitReturnParent.keys[0]);
+					
+					System.out.println("Current Parent after split parent insert :" + currentParent.noOfNode);
+					
+					// re-arrange child currentParent as four tree type
+					setFourTreeType( splitReturnParent, currentParent, indexToRemove );
+					
+					//Node child3 = currentParent.child.get(3);
+					//System.out.println( "Current Parent child 3 : " + child3.keys[0]);
+					
+					//System.out.println( "Current Parent's index 2 value : " + currentParent.keys[2]);
+					
+					// find index to insert item
+					Node nodeToInsert = this.findIndexInsert(currentParent, item);
+					
+					System.out.println( "Insert Node index 0 value : " + nodeToInsert.keys[0]);
+					// insert
+					return insertTree( nodeToInsert, item );
 				}
 			}
 			
 		}
 		return node;
+	}
+
+	public void setFourTreeType(Node splitReturnParent, Node currentParent, int indexToRemove) 
+	{
+		if ( indexToRemove == 2 )
+		{
+			Node child2 = splitReturnParent.child.get(0);
+			child2.setParent(currentParent);
+			currentParent.child.add(child2);
+			
+			Node child3 = splitReturnParent.child.get(1);
+			child3.setParent(currentParent);
+			currentParent.child.add(child3);
+		}
 	}
 
 	public void setThreeTreeType(Node splitReturnParent, Node currentParent, int indexToRemove) 
@@ -133,7 +175,7 @@ public class Node {
 
 	public Node validInsert(Node node, int item) {
 		int index = 0;
-		while ( node.keys[index] != null && index != node.keys.length )
+		while ( index != node.keys.length && node.keys[index] != null   )
 		{
 			if ( node.keys[index] > item )
 			{
@@ -151,14 +193,13 @@ public class Node {
 	}
 
 
-	private Node findIndexInsert(Node splitReturnParent, int item) 
+	public Node findIndexInsert(Node currentParent, int item) 
 	{
-		Node currentParent = splitReturnParent;
 		int index = 0;
 		while ( currentParent.child != null )
 		{	
 			index = 0;
-			while ( currentParent.keys[index] != null && index != currentParent.keys.length )
+			while ( index != currentParent.keys.length && currentParent.keys[index] != null )
 			{
 				if ( currentParent.keys[index] > item )
 				{
@@ -182,7 +223,7 @@ public class Node {
 		return currentParent;
 	}
 
-
+	
 	public Node split(Node current) {
 		Node currentParent = new Node();
 		currentParent.insertTree(currentParent, current.keys[1]);
@@ -200,7 +241,4 @@ public class Node {
 		
 		return currentParent;
 	}
-	
-	
-
 }

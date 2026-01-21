@@ -236,7 +236,7 @@ public class TwoThreeFourTest {
 		
 		assertEquals( 15, parent.keys[0] );
 		assertEquals( 25, parent.keys[1] );
-		//assertEquals( 35, parent.keys[2] );
+		assertEquals( 35, parent.keys[2] );
 		
 		assertEquals( 10, child0.keys[0] );
 		assertEquals( 20, child1.keys[0] );
