@@ -173,6 +173,37 @@ public class TwoThreeFourTest {
 	}
 	
 	//@Test
+	public void insertTwoTreeLeftMostSplitCase()
+	{
+		tree.insert(15);
+		tree.insert(20);
+		tree.insert(10);
+		tree.insert(11);
+		tree.insert(12);
+		Node node = tree.insert(13);
+		
+		/*
+		 *                   [15]
+		 *   [10, 11, 12] <- 13     [20]
+		 * 
+		 * */
+		
+		Node parent = node.parent;
+		
+		Node child0 = parent.child.get(0);
+		Node child1 = parent.child.get(1);
+		Node child2 = parent.child.get(2);
+		
+		assertEquals( 11, parent.keys[0] );
+		assertEquals( 15, parent.keys[1] );
+		assertEquals( 10, child0.keys[0] );
+		assertEquals( 12, child1.keys[0] );
+		assertEquals( 13, child1.keys[1] );
+		assertEquals( 20, child2.keys[0] );
+		assertEquals( 3, parent.noOfNode );
+	}
+	
+	//@Test
 	public void insertThreeTreeRightMostChildCase()
 	{
 		tree.insert(15);
@@ -208,8 +239,8 @@ public class TwoThreeFourTest {
 		assertEquals( 3, parent.noOfNode );
 	}
 	
-	@Test
-	public void insertCurrentParentIsFourTreeCase()
+	//@Test
+	public void insertFourTreeRightMostChildCase()
 	{
 		tree.insert(15);
 		tree.insert(20);
@@ -231,8 +262,7 @@ public class TwoThreeFourTest {
 		Node child0 = parent.child.get(0);
 		Node child1 = parent.child.get(1);
 		Node child2 = parent.child.get(2);
-		Node child3 = parent.child.get(3);
-		
+		Node child3 = parent.child.get(3);		
 		
 		assertEquals( 15, parent.keys[0] );
 		assertEquals( 25, parent.keys[1] );
@@ -244,6 +274,44 @@ public class TwoThreeFourTest {
 		assertEquals( 40, child3.keys[0] );
 		assertEquals( 45, child3.keys[1] );
 		
+		assertEquals( 4, parent.noOfNode );
+	}
+	
+	@Test
+	public void insertFourTreeLeftMostChildCase()
+	{
+		tree.insert(15);
+		tree.insert(20);
+		tree.insert(5);
+		tree.insert(6);
+		tree.insert(7);
+		tree.insert(8);
+		tree.insert(9);
+		Node node = tree.insert(10);
+		
+		/*   
+		 *          [6, 15]
+		 *   [5]   [7, 8, 9] <- 10    [20]
+		 * 
+		 * */
+		
+		Node parent = node.getParent();
+		
+		Node child0 = parent.child.get(0);
+		Node child1 = parent.child.get(1);
+		Node child2 = parent.child.get(2);
+		Node child3 = parent.child.get(3);
+		
+		
+		assertEquals( 6, parent.keys[0] );
+		assertEquals( 8, parent.keys[1] );
+		assertEquals( 15, parent.keys[2] );
+		
+		assertEquals( 5, child0.keys[0] );
+		assertEquals( 7, child1.keys[0] );
+		assertEquals( 9, child2.keys[0] );
+		assertEquals( 10, child2.keys[1] );
+		assertEquals( 20, child3.keys[0] );
 		assertEquals( 4, parent.noOfNode );
 	}
 	
