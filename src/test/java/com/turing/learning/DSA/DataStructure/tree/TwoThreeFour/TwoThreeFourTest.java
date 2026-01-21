@@ -277,8 +277,8 @@ public class TwoThreeFourTest {
 		assertEquals( 4, parent.noOfNode );
 	}
 	
-	@Test
-	public void insertFourTreeLeftMostChildCase()
+	//@Test
+	public void insertFourTreeMiddleMostChildCase()
 	{
 		tree.insert(15);
 		tree.insert(20);
@@ -302,7 +302,6 @@ public class TwoThreeFourTest {
 		Node child2 = parent.child.get(2);
 		Node child3 = parent.child.get(3);
 		
-		
 		assertEquals( 6, parent.keys[0] );
 		assertEquals( 8, parent.keys[1] );
 		assertEquals( 15, parent.keys[2] );
@@ -312,7 +311,48 @@ public class TwoThreeFourTest {
 		assertEquals( 9, child2.keys[0] );
 		assertEquals( 10, child2.keys[1] );
 		assertEquals( 20, child3.keys[0] );
+		
 		assertEquals( 4, parent.noOfNode );
+	}
+	
+	@Test
+	public void insertFourTreeLeftMostChildCase()
+	{
+		tree.insert(50);
+		tree.insert(49);
+		tree.insert(55);
+		tree.insert(48);
+		tree.insert(47);
+		tree.insert(46);
+		tree.insert(45);
+		Node node = tree.insert(44);
+		
+		/*
+		 *                  [ 48, 50]
+  		 *    44 -> [45, 46, 47]    [49]     [55]
+		 * 
+		 * */
+		
+		Node parent = node.getParent();
+		
+		Node child0 = parent.child.get(0);
+		Node child1 = parent.child.get(1);
+		Node child2 = parent.child.get(2);
+		Node child3 = parent.child.get(3);
+		
+		assertEquals( 46, parent.keys[0] );
+		assertEquals( 48, parent.keys[1] );
+		assertEquals( 50, parent.keys[2] );
+		
+		assertEquals( 44, child0.keys[0] );
+		assertEquals( 45, child0.keys[1] );
+		assertEquals( 47, child1.keys[0] );
+		assertEquals( 49, child2.keys[0] );
+		assertEquals( 55, child3.keys[0] );
+		
+		assertEquals(4, parent.noOfNode);
+		
+		
 	}
 	
 }

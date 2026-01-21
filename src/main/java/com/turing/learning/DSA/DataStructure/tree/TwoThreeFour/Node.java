@@ -130,7 +130,7 @@ public class Node {
 			currentParent.child.add(child1);
 			
 			Node child2 = splitReturnParent.child.get(1);
-			child1.setParent(currentParent);
+			child2.setParent(currentParent);
 			currentParent.child.add(child2);
 			
 			// re-arrange child start from index 1
@@ -144,6 +144,23 @@ public class Node {
 		}
 		else if ( indexToRemove == 0 )
 		{
+			System.out.println( "Check INDEX to remove is at : " + indexToRemove );
+			
+			Node child0 = splitReturnParent.child.get(0);
+			child0.setParent(currentParent);
+			currentParent.child.add(child0);
+
+			Node child1 = splitReturnParent.child.get(1);
+			child1.setParent(currentParent);
+			currentParent.child.add(child1);
+			
+			// re-arrange child position 
+			for ( int i = 0;  i <= 1; i++ )
+			{
+				Node temp = currentParent.child.get(i);
+				currentParent.child.set(i, currentParent.child.get(i+2));
+				currentParent.child.set(i+2, temp);
+			}
 			
 		}
 	}
