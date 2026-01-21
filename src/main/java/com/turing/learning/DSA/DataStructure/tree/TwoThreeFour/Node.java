@@ -47,16 +47,22 @@ public class Node {
 			{
 				// current node parent is not null;
 				System.out.println("Current parent node is not null.");
-				Node splitReturnParent = split( node );
+				Node splitReturnParent = split(node);
+				
 				Node currentParent = node.getParent();
+				
 				if ( currentParent.noOfNode == 2 )
 				{
 					// find the current index of the it parent and remove
 					int indexToRemove = findCurrentIndexToRemoveFromParent( node, item ); 
 					currentParent.child.remove(indexToRemove);
 					
+					System.out.println("Index to remove :" + indexToRemove);
+					
 					// add split return parent into current parent.
 					currentParent.insertTree(currentParent, splitReturnParent.keys[0]);
+					
+					System.out.println("Current Parent after split parent insert :" + currentParent.noOfNode);
 					
 					// re-arrange child currentParent as three tree type
 					setThreeTreeType(splitReturnParent, currentParent, indexToRemove);
@@ -67,36 +73,46 @@ public class Node {
 					// insert
 					return insertTree( nodeToInsert, item );
 				}
+				else if ( currentParent.noOfNode == 3 )
+				{
+					System.out.println("Current Parent is three tree.");
+				}
 			}
 			
 		}
 		return node;
 	}
 
-	public void setThreeTreeType(Node splitReturnParent, Node currentParent, int indexToRemove) {
+	public void setThreeTreeType(Node splitReturnParent, Node currentParent, int indexToRemove) 
+	{	
 		if ( indexToRemove == 1 )
 		{
-			Node child1 = new Node();
+			Node child1 = splitReturnParent.child.get(0);
 			child1.setParent(currentParent);
-			child1.insertTree(child1, splitReturnParent.keys[0]);
+			currentParent.child.add(child1);
 			
-			Node child2 = new Node();
+			Node child2 = splitReturnParent.child.get(1);
 			child2.setParent(currentParent);
-			child2.insertTree(child2, splitReturnParent.keys[2]);
+			currentParent.child.add(child2);
 		}
 		else if ( indexToRemove == 0 )
 		{
-			Node child0 = new Node();
+			Node child0 = splitReturnParent.child.get(0);
 			child0.setParent(currentParent);
-			child0.insertTree(child0, splitReturnParent.keys[0]);
+			currentParent.child.add(child0);
 			
-			Node child1 = new Node();
+			Node child1 = splitReturnParent.child.get(1);
 			child1.setParent(currentParent);
-			child1.insertTree(child1, splitReturnParent.keys[2]);
+			currentParent.child.add(child1);
 			
-			Node child2 = new Node();
-			child2.setParent(currentParent);
-			child2.insertTree(child0, splitReturnParent.keys[1]);
+			// change child 0 and and currentParnet child 1
+			for ( int i =0; i < currentParent.child.size()-1; i++ )
+			{
+				Node temp = currentParent.child.get(i);
+				currentParent.child.set(i, currentParent.child.get(i+1));
+				currentParent.child.set(i+1, temp);
+			}
+			
 		}
 	}
 
@@ -162,8 +178,6 @@ public class Node {
 		}
 		
 		System.out.println( "Index :" + index );
-		System.out.println( "Current Index 0 Value :" + currentParent.keys[0] );
-		System.out.println( "Current Index 1 Value :" + currentParent.keys[1] );
 		// insert
 		return currentParent;
 	}
@@ -180,6 +194,7 @@ public class Node {
 		
 		Node child1 = new Node();
 		child1.insertTree(child1, current.keys[2]);
+		System.out.println(" child 1 value : " + child1.keys[0] );
 		child1.setParent(currentParent);
 		currentParent.child.add(child1);
 		
