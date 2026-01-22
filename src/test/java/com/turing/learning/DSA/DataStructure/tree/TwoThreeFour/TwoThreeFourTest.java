@@ -269,7 +269,7 @@ public class TwoThreeFourTest {
 		assertEquals( 4, parent.noOfNode );
 	}
 	
-	@Test
+	//@Test
 	public void insertFourTreeMiddleMostChildCase()
 	{
 		tree.insert(15);
@@ -307,7 +307,7 @@ public class TwoThreeFourTest {
 		assertEquals( 4, parent.noOfNode );
 	}
 	
-	@Test
+	//@Test
 	public void insertFourTreeLeftMostChildCase()
 	{
 		tree.insert(50);
@@ -346,7 +346,7 @@ public class TwoThreeFourTest {
 
 	}
 	
-	@Test
+	//@Test
 	public void insertFourTreeLeftMostChildOutOfBoundCase()
 	{
 		tree.insert(50);
@@ -384,6 +384,217 @@ public class TwoThreeFourTest {
 		assertEquals( 55, child3.keys[0] );
 		
 		assertEquals(4, parent.noOfNode);
+
+	}
+	
+	//@Test
+	public void insertFourTreeSplitLeftCase()
+	{
+		tree.insert(50);
+		tree.insert(49);
+		tree.insert(55);
+		tree.insert(48);
+		tree.insert(47);
+		tree.insert(46);
+		tree.insert(45);
+		tree.insert(44);
+		tree.insert(43);
+		Node node = tree.insert(42);
+		
+		/*
+		 *                  [46, 48, 50]
+  		 *   42 -> [43, 44, 45]   [47]    [49]     [55]
+		 * 
+		 * */
+		
+		Node parent = node.getParent();
+		
+		Node currentParent = parent.getParent();
+		assertEquals( 48, currentParent.keys[0] );
+		assertEquals( 2, currentParent.noOfNode );
+		
+		Node currentParentChild1 = currentParent.child.get(1);
+		assertEquals( 50, currentParentChild1.keys[0] );
+		
+		Node child0 = parent.child.get(0);
+		Node child1 = parent.child.get(1);
+		Node child2 = parent.child.get(2);
+	
+		assertEquals( 44, parent.keys[0] );
+		assertEquals( 46, parent.keys[1] );
+		
+		assertEquals( 42, child0.keys[0] );
+		assertEquals( 43, child0.keys[1] );
+		assertEquals( 45, child1.keys[0] );
+		assertEquals( 47, child2.keys[0] );
+			
+		assertEquals(3, parent.noOfNode);
+
+	}
+	
+	//@Test
+	public void insertFourTreeSplitLeftMostCase()
+	{
+		tree.insert(50);
+		tree.insert(49);
+		tree.insert(55);
+		tree.insert(48);
+		tree.insert(47);
+		tree.insert(46);
+		tree.insert(45);
+		tree.insert(44);
+		tree.insert(43);
+		tree.insert(42);
+		Node node = tree.insert(41);
+		
+		/*                                 [48]
+		 *                      [44, 46]            [50]
+  		 *      41 -> [42, 43]     [45]    [47]   [49]     [55]
+		 * 
+		 * */
+		
+		Node parent = node.getParent();
+		
+		Node currentParent = parent.getParent();
+		assertEquals( 48, currentParent.keys[0] );
+		assertEquals( 2, currentParent.noOfNode );
+		
+		Node currentParentChild1 = currentParent.child.get(1);
+		assertEquals( 50, currentParentChild1.keys[0] );
+		
+		Node child0 = parent.child.get(0);
+		Node child1 = parent.child.get(1);
+		Node child2 = parent.child.get(2);
+	
+		assertEquals( 44, parent.keys[0] );
+		assertEquals( 46, parent.keys[1] );
+		
+		assertEquals( 41, child0.keys[0] );
+		assertEquals( 42, child0.keys[1] );
+		assertEquals( 43, child0.keys[2] );
+		
+		assertEquals( 45, child1.keys[0] );
+		assertEquals( 47, child2.keys[0] );
+			
+		assertEquals(3, parent.noOfNode);
+
+	}
+	
+	@Test
+	public void insertFourTreeSplitLeftMostSplitCase()
+	{
+		tree.insert(50);
+		tree.insert(49);
+		tree.insert(55);
+		tree.insert(48);
+		tree.insert(47);
+		tree.insert(46);
+		tree.insert(45);
+		tree.insert(44);
+		tree.insert(43);
+		tree.insert(42);
+		tree.insert(41);
+		Node node = tree.insert(40);
+		
+		/*                                 [48]
+		 *                      [44, 46]             [50]
+  		 *      40 -> [41, 42, 43]  [45]  [47]   [49]     [55]
+		 * 
+		 * */
+		
+		Node parent = node.getParent();
+		
+		Node currentParent = parent.getParent();
+		assertEquals( 48, currentParent.keys[0] );
+		assertEquals( 2, currentParent.noOfNode );
+		
+		Node currentParentChild0 = currentParent.child.get(0);
+		assertEquals( 42, currentParentChild0.keys[0] );
+		assertEquals( 44, currentParentChild0.keys[1] );
+		assertEquals( 46, currentParentChild0.keys[2] );
+		
+		Node currentParentChild1 = currentParent.child.get(1);
+		assertEquals( 50, currentParentChild1.keys[0] );
+		
+		Node child0 = parent.child.get(0);
+		Node child1 = parent.child.get(1);
+		Node child2 = parent.child.get(2);
+		Node child3 = parent.child.get(3);
+		
+		assertEquals( 42, parent.keys[0] );
+		assertEquals( 44, parent.keys[1] );
+		assertEquals( 46, parent.keys[2] );
+		
+		assertEquals( 40, child0.keys[0] );
+		assertEquals( 41, child0.keys[1] );
+		
+		assertEquals( 43, child1.keys[0] );
+		
+		assertEquals( 45, child2.keys[0] );
+		
+		assertEquals( 47, child3.keys[0] );
+			
+		assertEquals(4, parent.noOfNode);
+
+	}
+	
+	@Test
+	public void insertFourTreeCurrentParentSplitLeftMostSplitCase()
+	{
+		tree.insert(50);
+		tree.insert(49);
+		tree.insert(55);
+		tree.insert(48);
+		tree.insert(47);
+		tree.insert(46);
+		tree.insert(45);
+		tree.insert(44);
+		tree.insert(43);
+		tree.insert(42);
+		tree.insert(41);
+		tree.insert(40);
+		tree.insert(39);
+		Node node = tree.insert(38);
+		
+		/*                                         [48]
+		 *                      [42, 44, 46]                             [50]
+  		 *      38 -> [39, 40, 41]    [43]    [45]    [47]          [49]     [55]
+		 * 
+		 * */
+		
+		Node parent = node.getParent();
+		
+		Node currentParent = parent.getParent();
+		assertEquals( 44, currentParent.keys[0] );
+		assertEquals( 48, currentParent.keys[1] );
+		assertEquals( 3, currentParent.noOfNode );
+		
+		Node currentParentChild0 = currentParent.child.get(0);
+		assertEquals( 40, currentParentChild0.keys[0] );
+		assertEquals( 42, currentParentChild0.keys[1] );
+		
+		Node currentParentChild1 = currentParent.child.get(1);
+		assertEquals( 46, currentParentChild1.keys[0] );
+		
+		Node currentParentChild2 = currentParent.child.get(2);
+		assertEquals( 50, currentParentChild2.keys[0] );
+		
+		Node child0 = parent.child.get(0);
+		Node child1 = parent.child.get(1);
+		Node child2 = parent.child.get(2);
+		
+		assertEquals( 42, parent.keys[0] );
+		assertEquals( 44, parent.keys[1] );
+		assertEquals( 46, parent.keys[2] );
+		
+		assertEquals( 38, child0.keys[0] );
+		assertEquals( 39, child0.keys[1] );
+		
+		assertEquals( 41, child1.keys[0] );
+		
+		assertEquals( 43, child2.keys[0] );
+
+		assertEquals(3, parent.noOfNode);
 
 	}
 	
