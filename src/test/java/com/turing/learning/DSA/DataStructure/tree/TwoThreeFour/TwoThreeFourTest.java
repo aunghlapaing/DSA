@@ -7,20 +7,16 @@ import org.junit.jupiter.api.Test;
 public class TwoThreeFourTest {
 	
 	TwoThreeFourTree tree = new TwoThreeFourTree();
-	
-	
+
 	//@Test
 	public void insertRootEmptyCase()
 	{	
 		Node node = tree.insert(15);
 		
-		// behaviour after insert
-		
 		assertEquals( 15, node.keys[0] );
 		assertEquals( 2, node.noOfNode );
 		assertEquals( null, node.parent );
 	}
-	
 	
 	//@Test
 	public void insertRootTwoKeysSimpleCase()
@@ -33,8 +29,7 @@ public class TwoThreeFourTest {
 		assertEquals( 3, node.noOfNode );
 		assertEquals( null, node.parent );
 	}
-	
-	
+
 	//@Test
 	public void insertRootTwoKeysComplexCase()
 	{
@@ -46,7 +41,6 @@ public class TwoThreeFourTest {
 		assertEquals( 3, node.noOfNode );
 		assertEquals( null, node.parent );
 	}
-	
 	
 	//@Test
 	public void insertRootThreeKeysCase()
@@ -61,8 +55,7 @@ public class TwoThreeFourTest {
 		assertEquals( 4, node.noOfNode );
 		assertEquals( null, node.parent );
 	}
-	
-	
+
 	//@Test
 	public void insertRootSplitCase()
 	{
@@ -83,7 +76,6 @@ public class TwoThreeFourTest {
 		assertEquals( 2, parent.noOfNode );
 		
 	}
-	
 	
 	//@Test
 	public void insertTwoTreeRightMostCase()
@@ -277,7 +269,7 @@ public class TwoThreeFourTest {
 		assertEquals( 4, parent.noOfNode );
 	}
 	
-	//@Test
+	@Test
 	public void insertFourTreeMiddleMostChildCase()
 	{
 		tree.insert(15);
@@ -351,8 +343,48 @@ public class TwoThreeFourTest {
 		assertEquals( 55, child3.keys[0] );
 		
 		assertEquals(4, parent.noOfNode);
+
+	}
+	
+	@Test
+	public void insertFourTreeLeftMostChildOutOfBoundCase()
+	{
+		tree.insert(50);
+		tree.insert(49);
+		tree.insert(55);
+		tree.insert(48);
+		tree.insert(47);
+		tree.insert(46);
+		tree.insert(45);
+		tree.insert(44);
+		Node node = tree.insert(43);
 		
+		/*
+		 *                  [46, 48, 50]
+  		 *    43 -> [44, 45]   [47]    [49]     [55]
+		 * 
+		 * */
 		
+		Node parent = node.getParent();
+		
+		Node child0 = parent.child.get(0);
+		Node child1 = parent.child.get(1);
+		Node child2 = parent.child.get(2);
+		Node child3 = parent.child.get(3);
+		
+		assertEquals( 46, parent.keys[0] );
+		assertEquals( 48, parent.keys[1] );
+		assertEquals( 50, parent.keys[2] );
+		
+		assertEquals( 43, child0.keys[0] );
+		assertEquals( 44, child0.keys[1] );
+		assertEquals( 45, child0.keys[2] );
+		assertEquals( 47, child1.keys[0] );
+		assertEquals( 49, child2.keys[0] );
+		assertEquals( 55, child3.keys[0] );
+		
+		assertEquals(4, parent.noOfNode);
+
 	}
 	
 }

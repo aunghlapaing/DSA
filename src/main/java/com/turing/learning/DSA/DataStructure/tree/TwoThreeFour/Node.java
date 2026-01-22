@@ -51,62 +51,71 @@ public class Node {
 				
 				Node currentParent = node.getParent();
 				
-				if ( currentParent.noOfNode == 2 )
+				Node nodeToInsert = null;
+				
+				while ( currentParent != null )
 				{
-					// find the current index of the it parent and remove
-					int indexToRemove = findCurrentIndexToRemoveFromParent( node, item ); 
-					currentParent.child.remove(indexToRemove);
-					
-					System.out.println("Index to remove :" + indexToRemove);
-					
-					// add split return parent into current parent.
-					currentParent.insertTree(currentParent, splitReturnParent.keys[0]);
-					
-					System.out.println("Current Parent after split parent insert :" + currentParent.noOfNode);
-					
-					// re-arrange child currentParent as three tree type
-					setThreeTreeType(splitReturnParent, currentParent, indexToRemove);
-					
-					// find index to insert
-					Node nodeToInsert = this.findIndexInsert(currentParent, item);
-					
-					// insert
-					return insertTree( nodeToInsert, item );
+					if ( currentParent.noOfNode == 2 )
+					{
+						// find the current index of the it parent and remove
+						int indexToRemove = findCurrentIndexToRemoveFromParent( node, item ); 
+						currentParent.child.remove(indexToRemove);
+						
+						System.out.println("Index to remove :" + indexToRemove);
+						
+						// add split return parent into current parent.
+						currentParent.insertTree(currentParent, splitReturnParent.keys[0]);
+						
+						System.out.println("Current Parent after split parent insert :" + currentParent.noOfNode);
+						
+						// re-arrange child currentParent as three tree type
+						setThreeTreeType(splitReturnParent, currentParent, indexToRemove);
+						
+						// find index to insert
+						nodeToInsert = this.findIndexInsert(currentParent, item);
+						
+						// traverse currentParent
+						currentParent = currentParent.getParent();
+						
+					}
+					else if ( currentParent.noOfNode == 3 )
+					{
+						System.out.println("Current Parent is three tree.");
+						
+						System.out.println("Split return parent value: " + splitReturnParent.keys[0]);
+						
+						// find the current index of the it parent and remove
+						int indexToRemove = findCurrentIndexToRemoveFromParent( node, item ); 
+						currentParent.child.remove(indexToRemove);
+						
+						System.out.println("Index to remove :" + indexToRemove);
+						
+						// add split return parent into current parent.
+						currentParent.insertTree(currentParent, splitReturnParent.keys[0]);
+						
+						System.out.println("Current Parent after split parent insert :" + currentParent.noOfNode);
+						
+						// re-arrange child currentParent as four tree type
+						setFourTreeType( splitReturnParent, currentParent, indexToRemove );
+						
+						// find index to insert
+						nodeToInsert = this.findIndexInsert(currentParent, item);
+						
+						// traverse currentParent
+						currentParent = currentParent.getParent();
+						
+					}
+					else if ( currentParent.noOfNode == 4 )
+					{
+						System.out.println("Current parent is four tree type.");
+					}
 				}
-				else if ( currentParent.noOfNode == 3 )
-				{
-					System.out.println("Current Parent is three tree.");
-					
-					System.out.println("Split return parent value: " + splitReturnParent.keys[0]);
-					
-					// find the current index of the it parent and remove
-					int indexToRemove = findCurrentIndexToRemoveFromParent( node, item ); 
-					currentParent.child.remove(indexToRemove);
-					
-					System.out.println("Index to remove :" + indexToRemove);
-					
-					// add split return parent into current parent.
-					currentParent.insertTree(currentParent, splitReturnParent.keys[0]);
-					
-					System.out.println("Current Parent after split parent insert :" + currentParent.noOfNode);
-					
-					// re-arrange child currentParent as four tree type
-					setFourTreeType( splitReturnParent, currentParent, indexToRemove );
-					
-					//find index to insert item
-					Node nodeToInsert = this.findIndexInsert(currentParent, item);
-					
-					// insert
-					return insertTree( nodeToInsert, item );
-				}
-				else if ( currentParent.noOfNode == 4 )
-				{
-					System.out.println("Current parent is four tree type.");
-				}
-			}
-			
+				
+				// insert
+				return insertTree( nodeToInsert, item );
+	
+			}		
 		}
-		return node;
 	}
 
 	public void setFourTreeType(Node splitReturnParent, Node currentParent, int indexToRemove) 
@@ -198,7 +207,8 @@ public class Node {
 		}
 	}
 
-	public int findCurrentIndexToRemoveFromParent(Node node, int item) {
+	public int findCurrentIndexToRemoveFromParent(Node node, int item) 
+	{
 		Node currentParent = node.getParent();
 		int index = 0;
 		while ( currentParent.keys[index] != null && index != currentParent.keys.length )
@@ -213,7 +223,8 @@ public class Node {
 	}
 
 
-	public Node validInsert(Node node, int item) {
+	public Node validInsert(Node node, int item) 
+	{
 		int index = 0;
 		while ( index != node.keys.length && node.keys[index] != null   )
 		{
@@ -259,12 +270,12 @@ public class Node {
 		}
 		
 		System.out.println( "Index :" + index );
-		// insert
 		return currentParent;
 	}
 
 	
-	public Node split(Node current) {
+	public Node split(Node current) 
+	{
 		Node currentParent = new Node();
 		currentParent.insertTree(currentParent, current.keys[1]);
 		
@@ -275,7 +286,6 @@ public class Node {
 		
 		Node child1 = new Node();
 		child1.insertTree(child1, current.keys[2]);
-		System.out.println(" child 1 value : " + child1.keys[0] );
 		child1.setParent(currentParent);
 		currentParent.child.add(child1);
 		
