@@ -92,6 +92,7 @@ public class Node {
 		else if ( currentParent.getParent() != null )
 		{
 			//System.out.println( "CurrentParent's parent is not null." ); 
+			splitReturnFourTreeParent = splitCurrentParentFourTree(node, item, splitReturnParent, currentParent, splitReturnFourTreeParent);
 			
 			// get currentParent's parent
 			Node root = currentParent.getParent();
@@ -100,30 +101,68 @@ public class Node {
 			while ( root != null )
 			{	
 				// find index to remove from parent
-				int currentParentIndex = findCurrentIndexToRemoveFromParent( currentParent, item );
-				root.child.remove(currentParentIndex);
-				
+				int nodeToRemove = findCurrentIndexToRemoveFromParent( currentParent, item );
+					
 				System.out.println( "Before insert, ROOT 1 index value : " + root.keys[0] );
 				
 				if ( root.noOfNode == 2 )
 				{
-					// set root as three tree 
-					root.setThreeTreeType(splitReturnFourTreeParent, root, currentParentIndex);
+					Node existChild = root.child.get(nodeToRemove);
+					while ( existChild.child.size() != 0 )
+					{
+						// TODO we still need re-arrange the root's child's child
+						// current root is Two tree, so it has two
+						// One of them should be two tree or three
+						
+						System.out.println("Exist Child's o index :" + existChild.keys[0] );
+						
+						if ( nodeToRemove == 0 )
+						{
+							
+							// TODO Bug
+							// mark Root's child1 late it's gonna be child2
+							Node child2 = root.child.get(1);
+							Node check = child2.child.get(1);
+							
+							System.out.println(" ROOT CHILD2 child 0  :" + check.keys[0]);
+
+							// remove index child of the root
+							root.child.remove(nodeToRemove);
+	
+							// set root as three tree
+							root.setThreeTreeType(splitReturnFourTreeParent, root, nodeToRemove);
+							
+							// set child0 as three tree
+							Node child0 = root.child.get(nodeToRemove);
+							Node threeNodeParent = splitReturnFourTreeParent.child.get(nodeToRemove);
+
+							child0.setThreeTreeType(threeNodeParent, child0, nodeToRemove);
+							System.out.println( " Root's Child0 : " + child0.keys[0] );
+							
+							
+							// set child1 as two tree
+							Node child1 = root.child.get(1);
+							Node twoTreeNode0 = splitReturnFourTreeParent.child.get(1);	
+							child1.setTwoTreeType( twoTreeNode0, child1 );
+
+							// set child2 as two tree
+//							Node child2 = root.child.get(2);
+//							Node twoTreeNode1 = splitReturnFourTreeParent.child.get(2);
+//							child2.setTwoTreeType(twoTreeNode1, child2);
+
+							// set exist child as three tree 
+							existChild = existChild.child.get(nodeToRemove);							
+							
+						}
+						else if ( nodeToRemove == 1 )
+						{
+							existChild = existChild.child.get(nodeToRemove);
+						}	 
+					}
 					
-					// add splitReturnFourTreeParent into root		
-					root.insertTree(root, splitReturnFourTreeParent.keys[0]);
-					System.out.println( "After insert, ROOT 1 index value : " + root.keys[0] );
-					
-					// find which node should be three node
-					 Node threeTreeNode = findIndexInsert( splitReturnFourTreeParent, item );
-					
-					// we will make root's child as three tree depending on threeTreeNode.
-					
-					// TODO we still need re-arrange the root's child's child
-					// current root is Two tree, so it has two
-					// One of them should be two tree or three
-					
-					
+					// add splitReturnFourTreeParent into root
+					root.insertTree( root, splitReturnFourTreeParent.keys[0] );
+					System.out.println( "After insert, ROOT 1 index value : " + root.keys[0] );				
 					
 					Node rootChild0 = root.child.get(0);
 					System.out.println( "Root child 0's length : " + rootChild0.keys.length );
@@ -152,6 +191,18 @@ public class Node {
 		}
 		
 		return nodeToInsert;
+	}
+
+	public void setTwoTreeType(Node twoTreeNode0, Node node) 
+	{
+		Node child0 = twoTreeNode0.child.get(0);
+		child0.setParent(node);
+		node.child.add(child0);
+		
+		Node child1 = twoTreeNode0.child.get(1);
+		child1.setParent(node);
+		node.child.add(child1);
+		
 	}
 
 	public Node splitCurrentParentFourTree(Node node, int item, Node splitReturnParent, Node currentParent, Node splitReturnFourTreeParent) 
@@ -332,24 +383,39 @@ public class Node {
 			currentParent.child.add(child2);
 		}
 		else if ( indexToRemove == 0 )
-		{
-			Node check = currentParent.child.get(0);
-			System.out.println( "Check Current Parent's child 0 Index : " + check.keys[0] );
-			
-			Node child0 = splitReturnParent.child.get(0);
-			child0.setParent(currentParent);
-			currentParent.child.add(child0);
-			
-			Node child1 = splitReturnParent.child.get(1);
-			child1.setParent(currentParent);
-			currentParent.child.add(child1);
-			
-			// change child 0 and and currentParnet child 1
-			for ( int i =0; i < currentParent.child.size()-1; i++ )
+		{	
+			if ( currentParent.child.size() == 0 )
 			{
-				Node temp = currentParent.child.get(i);
-				currentParent.child.set(i, currentParent.child.get(i+1));
-				currentParent.child.set(i+1, temp);
+				Node child0 = splitReturnParent.child.get(0);
+				child0.setParent(currentParent);
+				currentParent.child.add(child0);
+				
+				Node child1 = splitReturnParent.child.get(1);
+				child1.setParent(currentParent);
+				currentParent.child.add(child1);
+				
+				Node child3 = splitReturnParent.child.get(2);
+				child3.setParent(currentParent);
+				currentParent.child.add(child3);
+				
+			}
+			else 
+			{
+				Node child0 = splitReturnParent.child.get(0);
+				child0.setParent(currentParent);
+				currentParent.child.add(child0);
+				
+				Node child1 = splitReturnParent.child.get(1);
+				child1.setParent(currentParent);
+				currentParent.child.add(child1);
+				
+				// change child 0 and and currentParnet child 1
+				for ( int i =0; i < currentParent.child.size()-1; i++ )
+				{
+					Node temp = currentParent.child.get(i);
+					currentParent.child.set(i, currentParent.child.get(i+1));
+					currentParent.child.set(i+1, temp);
+				}
 			}
 			
 		}
@@ -360,16 +426,29 @@ public class Node {
 		Node currentParent = node.getParent();
 				
 		int index = 0;
-		
-		while ( index != currentParent.keys.length && currentParent.keys[index] != null )
-		{
-			if ( currentParent.keys[index] > item )
+		while ( currentParent.child != null )
+		{	
+			index = 0;
+			while ( index != currentParent.keys.length && currentParent.keys[index] != null )
+			{
+				if ( currentParent.keys[index] > item )
+				{
+					break;
+				}
+				index++;
+			}
+			
+			if ( currentParent.child.size() == 0 )
 			{
 				break;
 			}
-			index++;
-		}	
-			
+			else
+			{
+				currentParent = currentParent.child.get(index);
+			}
+		}
+		
+		System.out.println( "Index :" + index );
 		return index;
 	}
 

@@ -564,11 +564,10 @@ public class TwoThreeFourTest {
 		 * */
 		
 		Node parent = node.getParent();
-		Node child0 = parent.child.get(0);
-		assertEquals( 42, child0.keys[0] );
+		Node child2 = parent.child.get(2);
+		assertEquals( 39, child2.keys[0] );
 		
-		
-		
+	
 //		Node currentParent = parent.getParent();
 //		assertEquals( 44, currentParent.keys[0] );
 //		assertEquals( 48, currentParent.keys[1] );
