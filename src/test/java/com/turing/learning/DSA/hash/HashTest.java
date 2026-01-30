@@ -9,12 +9,12 @@ import org.junit.jupiter.api.Test;
 
 public class HashTest {
 	
-	HashTable ht = new HashTable();
+	HashTableWithChaining ht = new HashTableWithChaining();
 	
 	@Test
 	public void testHashFunction()
 	{	
-		int count = HashTable.hash( "hello", 10 );
+		int count = HashTableWithChaining.hash( "hello", 10 );
 		assertEquals(2, count);
 	}
 	
