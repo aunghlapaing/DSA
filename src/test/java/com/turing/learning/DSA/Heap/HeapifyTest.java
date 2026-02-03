@@ -1,6 +1,7 @@
 package com.turing.learning.DSA.Heap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class HeapifyTest {
 	}
 	
 	@Test
-	public void deleteLeafCase()
+	public void deleteLeafPositiveCase()
 	{
 		Integer[] list = { 1, 8, 2, 4, 6, 10 };
 		
@@ -51,8 +52,24 @@ public class HeapifyTest {
 		
 		assertTrue( util.heapUtil(data) );
 		
-		ArrayList<Integer> data1 = heap.delete(1);
+		ArrayList<Integer> data1 = heap.delete(10);
 		assertTrue( util.heapUtil(data1) );
+		
+	}
+	
+	@Test
+	public void deleteLeafNegativeCase()
+	{
+		Integer[] list = { 1, 8, 2, 4, 6, 10 };
+		
+		List<Integer> data = heap.setData(Arrays.asList(list));
+		
+		assertTrue( util.heapUtil(data) );
+		
+		RuntimeException except = assertThrows ( RuntimeException.class, ()-> {
+			heap.delete(11);
+		} );
+		assertEquals( "Delete Item not found.", except.getMessage() );
 		
 	}
 }

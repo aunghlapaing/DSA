@@ -37,8 +37,8 @@ public class Heap {
 		{
 			int n = list.size();
 			int largestIndex = ( n / 2) - 1;
-			int leftIndex = ( largestIndex * 2 ) + 1;
-			int rightIndex = ( largestIndex * 2 ) + 2;
+			int leftIndex = ( currentIndex * 2 ) + 1;
+			int rightIndex = ( currentIndex * 2 ) + 2;
 			if ( leftIndex < n )
 			{
 				if ( list.get(leftIndex) > list.get(largestIndex) )
@@ -54,7 +54,7 @@ public class Heap {
 				}
 			}
 			// swap
-			Integer temp = list.get(largestIndex);
+			Integer temp = list.get(currentIndex);
 			Integer max = list.get(largestIndex);
 			
 			list.set(currentIndex, max);
@@ -64,43 +64,38 @@ public class Heap {
 		}
 	}
 
-	public ArrayList<Integer> delete(int item) 
-	{
+	public ArrayList<Integer> delete(Integer item) 
+	{	
 		int n = list.size();
-		System.out.println( "Last :" + list.get(n - 1) );
-		int deleteIndex = 0;
-		if ( !isLeaf(item) )
+		int deleteIndex = this.list.indexOf(item);
+		
+		System.out.println( "DeleteIndex : " + list.indexOf(item) );
+		if ( deleteIndex != -1 )
 		{
-			// find item index and swap with leaf
-			while ( deleteIndex < n - 1 )
+			if ( !isLeaf(item) )
 			{
-				if ( list.get(deleteIndex) == item )
-				{
-					break;
-				}
-				deleteIndex++;
+				//  swap with leaf
+				Integer temp = list.get(deleteIndex);
+				Integer last = list.get(n -1);
+				
+				list.set(deleteIndex, last);
+				list.set(n - 1, temp);
 			}
-			System.out.println( "DeleteIndex:" + deleteIndex);
-			// get deleteIndex and swap
-			Integer temp = list.get(deleteIndex);
-			Integer last = list.get(n -1);
-			
-			list.set(deleteIndex, last);
-			list.set(n - 1, temp);
+			// delete
+			this.list.remove(n-1);
+			this.heapify();
+			System.out.println( "After Delete List :" + list.toString());
+			return new ArrayList<>(list);
 		}
-		// delete
-		this.list.remove(deleteIndex);
-		this.heapify();
-		return new ArrayList<>(list);
+		else
+		{
+			throw new RuntimeException( "Delete Item not found." );
+		}
 	}
 
 	private boolean isLeaf(int item) 
 	{
 		int lastIndex = list.size()-1;
-		if ( list.get(lastIndex) == item )
-		{
-			return true;
-		}
-		return false;
+		return list.get(lastIndex) == item;
 	}
 }
