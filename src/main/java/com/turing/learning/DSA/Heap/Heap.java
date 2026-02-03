@@ -6,7 +6,6 @@ import java.util.List;
 public class Heap {
 	
 	List<Integer> list = new ArrayList<Integer>();
-	int n = list.size();
 
 	public void insert(int item) 
 	{
@@ -19,12 +18,17 @@ public class Heap {
 		return this.list.get(0);
 	}
 	
-	List<Integer> setData( List<Integer> list )
+	List<Integer> setData( List<Integer> data )
 	{
-		this.list = list;
+		//this.list = data;
+		for ( Integer item : data )
+		{
+			this.list.add(item);
+		}
 		this.heapify();
 		return list;
 	}
+	
 
 	public void heapify() 
 	{
@@ -60,34 +64,34 @@ public class Heap {
 		}
 	}
 
-	public List<Integer> delete(int item) 
+	public ArrayList<Integer> delete(int item) 
 	{
+		int n = list.size();
+		System.out.println( "Last :" + list.get(n - 1) );
+		int deleteIndex = 0;
 		if ( !isLeaf(item) )
 		{
-			int deleteIndex = 0;
 			// find item index and swap with leaf
-			while ( deleteIndex < n )
+			while ( deleteIndex < n - 1 )
 			{
 				if ( list.get(deleteIndex) == item )
 				{
-					
 					break;
 				}
-				
 				deleteIndex++;
 			}
-			
+			System.out.println( "DeleteIndex:" + deleteIndex);
 			// get deleteIndex and swap
 			Integer temp = list.get(deleteIndex);
-			Integer last = list.get(n);
+			Integer last = list.get(n -1);
 			
 			list.set(deleteIndex, last);
-			list.set(n, temp);
+			list.set(n - 1, temp);
 		}
 		// delete
-		list.set(n, null);
+		this.list.remove(deleteIndex);
 		this.heapify();
-		return list;
+		return new ArrayList<>(list);
 	}
 
 	private boolean isLeaf(int item) 
