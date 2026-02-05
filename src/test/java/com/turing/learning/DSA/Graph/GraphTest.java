@@ -1,5 +1,10 @@
 package com.turing.learning.DSA.Graph;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Iterator;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 public class GraphTest {
@@ -30,6 +35,12 @@ public class GraphTest {
 		graph.addEdges("C", "D");
 		graph.addEdges("E", "C");
 		graph.addEdges("E", "F");
+		
+		List<String> list = graph.getAdjacentVertex("A");
+		
+		Iterator<String> iterator = list.iterator();
+		assertEquals( "B", iterator.next() );
+		assertEquals( "C", iterator.next() );
 		
 	}
 

@@ -10,5 +10,7 @@ public abstract class Graph {
 	abstract void addVertices(String string);
 	abstract void build();
 	abstract void addEdges(String from, String to);
+	abstract List<String> getAdjacentVertex( String from );
+	abstract boolean exitEdge( String from, String to );
 
 }
