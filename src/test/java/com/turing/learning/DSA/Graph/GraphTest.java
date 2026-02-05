@@ -16,6 +16,8 @@ public class GraphTest {
 	 * add vertices
 	 * build
 	 * add edges
+	 * DFS
+	 * BFS
 	 * 
 	 * */
 	
@@ -83,6 +85,40 @@ public class GraphTest {
 		assertEquals( "B", iterator.next() );
 		assertEquals( "E", iterator.next() );
 		assertEquals( "C", iterator.next() );
+		assertEquals( "D", iterator.next() );
+		assertEquals( "F", iterator.next() );
+		assertFalse( iterator.hasNext() );
+		
+	}
+	
+	@Test
+	public void bfsCase()
+	{
+		graph.addVertices("A");
+		graph.addVertices("B");
+		graph.addVertices("C");
+		graph.addVertices("D");
+		graph.addVertices("E");
+		graph.addVertices("F");
+		
+		graph.build();
+		
+		graph.addEdges("A", "B");
+		graph.addEdges("A", "C");
+		graph.addEdges("B", "E");
+		graph.addEdges("C", "D");
+		graph.addEdges("E", "C");
+		graph.addEdges("E", "F");
+		
+		List<String> list = graph.bfs();
+		
+		// A->B->C->E->F->D
+		
+		Iterator<String> iterator = list.iterator();
+		assertEquals( "A", iterator.next() );
+		assertEquals( "B", iterator.next() );
+		assertEquals( "C", iterator.next() );
+		assertEquals( "E", iterator.next() );
 		assertEquals( "D", iterator.next() );
 		assertEquals( "F", iterator.next() );
 		assertFalse( iterator.hasNext() );
