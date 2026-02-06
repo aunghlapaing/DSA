@@ -7,6 +7,8 @@ import java.util.Queue;
 import java.util.Stack;
 
 public abstract class Graph {
+	
+	// template design pattern
 
 	List<String> vertices = new ArrayList<String>();
 	
