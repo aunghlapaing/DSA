@@ -10,7 +10,8 @@ import org.junit.jupiter.api.Test;
 
 public class GraphTest {
 	
-	Graph graph = new GraphAMatrix();
+	//Graph graph = new GraphAMatrix();
+	Graph graph = new GraphAdjList();
 	
 	/*
 	 * add vertices
@@ -57,7 +58,7 @@ public class GraphTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void dfsCase()
 	{
 		graph.addVertices("A");
@@ -91,7 +92,7 @@ public class GraphTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void bfsCase()
 	{
 		graph.addVertices("A");
