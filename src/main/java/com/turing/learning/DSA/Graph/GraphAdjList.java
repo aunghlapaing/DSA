@@ -3,9 +3,8 @@ package com.turing.learning.DSA.Graph;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GraphAdjList {
+public class GraphAdjList extends Graph {
 	
-	List<String> vertices = new ArrayList<String>();
 	
 	List<List<String>> adjList = new ArrayList<>();
 	
@@ -38,8 +37,8 @@ public class GraphAdjList {
 	public List<String> getAdjVertices(String string) 
 	{
 		int index = this.vertices.indexOf(string);
-		List<String> adjVertices = this.adjList.get(index);
-		return adjVertices;
+		List<String> list = this.adjList.get(index);
+		return list;
 	}
 
 }

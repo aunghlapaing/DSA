@@ -3,9 +3,8 @@ package com.turing.learning.DSA.Graph;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GraphAdjMatrix {
+public class GraphAdjMatrix extends Graph {
 	
-	List<String> vertices = new ArrayList<String>();
 	int matrix [][];
 	
 	public void addVertices(String string) 
@@ -31,7 +30,7 @@ public class GraphAdjMatrix {
 		
 	}
 	
-	public boolean hasExit( String from, String to )
+	private boolean exitEdge( String from, String to )
 	{
 		int fromIndex = this.vertices.indexOf(from);
 		int toIndex = this.vertices.indexOf(to);
@@ -47,9 +46,9 @@ public class GraphAdjMatrix {
 		{
 			if ( !string.equals(vertex) )
 			{
-				// we will current and next
-				// and we need check these vertices has exit?
-				if ( hasExit( string, vertex ) )
+				// we will get next
+				// and we need check these vertices exit edge?
+				if ( exitEdge( string, vertex ) )
 				{
 					list.add(vertex);
 				}
@@ -58,5 +57,7 @@ public class GraphAdjMatrix {
 		
 		return list;
 	}
+
+	
 
 }
