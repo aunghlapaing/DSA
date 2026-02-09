@@ -3,71 +3,43 @@ package com.turing.learning.DSA.Graph;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GraphAdjList extends Graph {
+public class GraphAdjList {
 	
-	List<List<String>> adjList = new ArrayList<List<String>>();
+	List<String> vertices = new ArrayList<String>();
 	
-	/*
-	 * [
-	 *  [ ]
-	 * ]
-	 * 
-	 * */
-
-	@Override
-	void addVertices(String string) 
+	List<List<String>> adjList = new ArrayList<>();
+	
+	public void addVertices(String vertex) 
 	{
-		this.vertices.add(string);
+		this.vertices.add(vertex);
+		
 	}
 
-	@Override
-	void build() 
+	public void build() 
 	{
 		for ( int i = 0; i < vertices.size(); i++ )
 		{
-			List<String> list = new ArrayList<>();
+			List<String> list = new ArrayList<String>();
 			this.adjList.add(list);
-		}
-		
+		}		
 	}
 
-	@Override
-	void addEdges(String from, String to) 
+	public void addEdge(String from, String to) 
 	{
 		int fromIndex = this.vertices.indexOf(from);
-		List<String> fromAdjVertex = this.adjList.get(fromIndex);
-		fromAdjVertex.add(to);
-
-		int toIndex = this.vertices.indexOf(to);
-		List<String> toAdjVertex =  this.adjList.get(toIndex);
-		toAdjVertex.add(from);	
+		List<String> fromVertex = this.adjList.get(fromIndex);
+		fromVertex.add(to);
+		
+		int toIndex = this.vertices.indexOf(to);	
+		List<String> toVertex = this.adjList.get(toIndex);
+		toVertex.add(from);
 	}
 
-	@Override
-	List<String> getAdjacentVertex(String from) 
+	public List<String> getAdjVertices(String string) 
 	{
-		List<String> list = new ArrayList<String>();
-		
-		for ( String vertex : this.vertices )
-		{
-			if ( !from.equals(vertex) )
-			{
-				if ( exitEdge( from, vertex ) )
-				{
-					list.add(vertex);
-				}
-			}
-		}
-		
-		return list;
-	}
-
-	@Override
-	boolean exitEdge(String from, String to) 
-	{
-		int fromIndex = this.vertices.indexOf(from);
-		List<String> fromAdjVertex = this.adjList.get(fromIndex);
-		return fromAdjVertex.contains(to);
+		int index = this.vertices.indexOf(string);
+		List<String> adjVertices = this.adjList.get(index);
+		return adjVertices;
 	}
 
 }
