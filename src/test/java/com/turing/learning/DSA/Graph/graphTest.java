@@ -10,11 +10,12 @@ import org.junit.jupiter.api.Test;
 
 public class graphTest {
 	
+	//GraphAdjList graph = new GraphAdjList();
+	GraphAdjMatrix graph = new GraphAdjMatrix();
+	
 	@Test
 	public void graphWithAdjListCase()
 	{
-		GraphAdjList graph = new GraphAdjList();
-		
 		graph.addVertices("A");
 		graph.addVertices("B");
 		graph.addVertices("C");
@@ -27,15 +28,20 @@ public class graphTest {
 		graph.addEdge("A", "B");
 		graph.addEdge("A", "C");
 		graph.addEdge("C", "E");
-		graph.addEdge("C", "F");
+		graph.addEdge("C", "D");
 		graph.addEdge("B", "E");
-		graph.addEdge("B", "D");
-		graph.addEdge("D", "E");
+		graph.addEdge("E", "F");
 		
 		List<String> adjVertices = graph.getAdjVertices("A");
 		Iterator<String> iterator = adjVertices.iterator();
 		assertEquals( "B", iterator.next() );
 		assertEquals( "C", iterator.next() );
+		assertFalse( iterator.hasNext() );
+		
+		adjVertices = graph.getAdjVertices("B");
+		iterator = adjVertices.iterator();
+		assertEquals( "A", iterator.next() );
+		assertEquals( "E", iterator.next() );
 		assertFalse( iterator.hasNext() );
 	}
 
