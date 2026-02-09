@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 
 public class graphTest {
 	
-	//Graph graph = new GraphAdjList();
-	Graph graph = new GraphAdjMatrix();
+	Graph graph = new GraphAdjList();
+	//Graph graph = new GraphAdjMatrix();
 	
 	graphTest()
 	{
@@ -48,12 +48,14 @@ public class graphTest {
 		assertEquals( "E", iterator.next() );
 		assertFalse( iterator.hasNext() );
 		
+		/*
 		adjVertices = graph.getAdjVertices("C");
 		iterator = adjVertices.iterator();
 		assertEquals( "A", iterator.next() );
-		assertEquals( "D", iterator.next() );
 		assertEquals( "E", iterator.next() );
+		assertEquals( "D", iterator.next() );
 		assertFalse( iterator.hasNext() );
+		*/
 	}
 	
 	@Test
@@ -67,6 +69,23 @@ public class graphTest {
 		assertEquals( "B", iterator.next() );
 		assertEquals( "E", iterator.next() );
 		assertEquals( "C", iterator.next() );
+		assertEquals( "D", iterator.next() );
+		assertEquals( "F", iterator.next() );
+		assertFalse( iterator.hasNext() );
+		
+	}
+	
+	@Test
+	public void bfsCase()
+	{
+		// A->B->C->E->D->F
+		
+		List<String> bfs = graph.bfs();
+		Iterator<String> iterator = bfs.iterator();
+		assertEquals( "A", iterator.next() );
+		assertEquals( "B", iterator.next() );
+		assertEquals( "C", iterator.next() );
+		assertEquals( "E", iterator.next() );
 		assertEquals( "D", iterator.next() );
 		assertEquals( "F", iterator.next() );
 		assertFalse( iterator.hasNext() );

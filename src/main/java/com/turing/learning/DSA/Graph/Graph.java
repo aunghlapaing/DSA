@@ -1,7 +1,9 @@
 package com.turing.learning.DSA.Graph;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 public abstract class Graph {
@@ -28,7 +30,6 @@ public abstract class Graph {
 				visited.add(vertex);
 			}
 			
-			
 			List<String> adjVertices = this.getAdjVertices(vertex);
 			if ( adjVertices.size() > 0 )
 			{
@@ -39,6 +40,40 @@ public abstract class Graph {
 					{
 						System.out.println(" Vertex :" + vertex );
 						stack.push(vertex);
+					}					
+				}
+			}
+		}
+		
+		return visited;
+	}
+	
+	public List<String> bfs() 
+	{
+		List<String> visited = new ArrayList<String>();
+		
+		String currentVertex = this.vertices.get(0);
+		Queue<String> queue = new LinkedList<String>();
+		queue.add(currentVertex);
+		
+		while ( !queue.isEmpty() )
+		{
+			String vertex = queue.poll();
+			if ( !visited.contains(vertex) )
+			{
+				visited.add(vertex);
+			}
+			
+			List<String> adjVertices = this.getAdjVertices(vertex);
+			if ( adjVertices.size() > 0 )
+			{
+				for ( int i = 0; i < adjVertices.size(); i++ )
+				{
+					vertex = adjVertices.get(i);
+					if ( !visited.contains(vertex) )
+					{
+						System.out.println(" Vertex :" + vertex );
+						queue.add(vertex);
 					}					
 				}
 			}
