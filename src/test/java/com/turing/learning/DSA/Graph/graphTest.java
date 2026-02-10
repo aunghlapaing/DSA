@@ -33,7 +33,7 @@ public class graphTest {
 	}
 	
 	@Test
-	public void graphWithAdjListCase()
+	public void graphBuildCase()
 	{
 
 		List<String> adjVertices = graph.getAdjVertices("A");
@@ -49,6 +49,8 @@ public class graphTest {
 		assertFalse( iterator.hasNext() );
 		
 		/*
+		Test Case Bug
+		
 		adjVertices = graph.getAdjVertices("C");
 		iterator = adjVertices.iterator();
 		assertEquals( "A", iterator.next() );

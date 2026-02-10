@@ -30,7 +30,7 @@ public class GraphAdjMatrix extends Graph {
 		
 	}
 	
-	private boolean exitEdge( String from, String to )
+	public boolean exitEdge( String from, String to )
 	{
 		int fromIndex = this.vertices.indexOf(from);
 		int toIndex = this.vertices.indexOf(to);
@@ -57,7 +57,5 @@ public class GraphAdjMatrix extends Graph {
 		
 		return list;
 	}
-
-	
 
 }

@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GraphAdjList extends Graph {
-	
-	
+
 	List<List<String>> adjList = new ArrayList<>();
 	
 	public void addVertices(String vertex) 

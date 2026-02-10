@@ -38,7 +38,6 @@ public abstract class Graph {
 					vertex = adjVertices.get(i);
 					if ( !visited.contains(vertex) )
 					{
-						System.out.println(" Vertex :" + vertex );
 						stack.push(vertex);
 					}					
 				}
@@ -72,7 +71,6 @@ public abstract class Graph {
 					vertex = adjVertices.get(i);
 					if ( !visited.contains(vertex) )
 					{
-						System.out.println(" Vertex :" + vertex );
 						queue.add(vertex);
 					}					
 				}
