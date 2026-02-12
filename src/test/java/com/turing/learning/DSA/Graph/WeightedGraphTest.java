@@ -3,6 +3,7 @@ package com.turing.learning.DSA.Graph;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -40,5 +41,32 @@ public class WeightedGraphTest {
 		assertEquals( "C", iterator.next() );
 		assertFalse( iterator.hasNext() );
 	}
+	
+	@Test
+	public void getEdgeCase()
+	{
+		List<String> vertices = new ArrayList<>();
+		vertices.add( "A" );
+		List<Edge> list = graph.getAdjEdges(vertices);
+		Iterator<Edge> iterator = list.iterator();
+		assertEquals("A - B = 3", iterator.next().toString());
+		assertEquals("A - C = 4", iterator.next().toString());
+		assertFalse( iterator.hasNext() );
+	}
+	
+	//@Test
+	public void primAlgorithmCase()
+	{
+		List<String> list = graph.primAlgo();
+		Iterator<String> iterator = list.iterator();
+		assertEquals("A - B = 3", iterator.next());
+		assertEquals("B - E = 1", iterator.next());
+		assertEquals("E - C = 3", iterator.next());
+		assertEquals("E - F = 5", iterator.next());
+		assertEquals("C - D = 6", iterator.next());
+		assertFalse( iterator.hasNext() );
+		
+	}
+	
 
 }

@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 
 public class graphTest {
 	
-	Graph graph = new GraphAdjList();
-	//Graph graph = new GraphAdjMatrix();
+	//Graph graph = new GraphAdjList();
+	Graph graph = new GraphAdjMatrix();
 	
 	graphTest()
 	{
