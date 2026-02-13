@@ -43,6 +43,7 @@ public class WeightedGraph extends GraphAdjMatrix {
 	
 	public List<Edge> getAdjEdges(List<String> visited)
 	{
+		this.markedVisited( visited );
 		List<Edge> list = new ArrayList<Edge>();
 		
 		if ( visited.size() == 1 )
@@ -53,16 +54,41 @@ public class WeightedGraph extends GraphAdjMatrix {
 		}
 		else if ( visited.size() > 1 )
 		{
-			String fromVertex = visited.get(0);
-			getAdjEdgesForGraph(list, fromVertex);
-			
-			String toVertex = visited.get(visited.size()-1);
-			getAdjEdgesForGraph(list, toVertex);
+			for ( int i = 0; i < visited.size()/2; i++ )
+			{
+				String fromVertex = visited.get(i);
+				getAdjEdgesForGraph(list, fromVertex);
+				
+				String toVertex = visited.get(i + visited.size()/2);
+				getAdjEdgesForGraph(list, toVertex);
+			}
 		}
 		
 		Collections.sort(list);
 		
 		return list;
+	}
+
+	private void markedVisited(List<String> visited) 
+	{
+		for( int i = 0; i < visited.size(); i++ )
+		{
+			String fromVertex = visited.get(i);
+			for ( String vertex : visited )
+			{
+				if ( !fromVertex.equals(vertex) )
+				{
+					if ( this.exitEdge(fromVertex, vertex) )
+					{
+						int fromIndex = this.vertices.indexOf(fromVertex);
+						int toIndex = this.vertices.indexOf(vertex);
+
+						this.matrix [fromIndex][toIndex] = MAX_WEIGHT;
+						this.matrix [toIndex][fromIndex] = MAX_WEIGHT;
+					}
+				}
+			}
+		}
 	}
 
 	public void getAdjEdgesForGraph(List<Edge> list, String fromVertex) 
@@ -79,17 +105,11 @@ public class WeightedGraph extends GraphAdjMatrix {
 					int weight = this.matrix [fromIndex][toIndex];
 					
 					Edge edge = new Edge( fromVertex, vertex, weight );
+					System.out.println( "Edge :"  + fromVertex + "-" + vertex );
 					list.add(edge);
 				}
 			}
 		}
-	}
-
-	public void getAdjEdgesForGraph(String string, List<Edge> list) 
-	{
-		
-			
-		
 	}
 
 	public List<String> primAlgo()
@@ -103,14 +123,28 @@ public class WeightedGraph extends GraphAdjMatrix {
 		int noOfVertices = this.vertices.size();
 		int noOfEdge = 0;
 		
-		while( noOfEdge < noOfVertices )
+		while( noOfEdge < noOfVertices - 1 )
 		{
-			List<String> adjVertices = this.getAdjVertices(currentVertex);
-			for( String vertex : adjVertices )
+			List<Edge> edge = this.getAdjEdges(visited);
+			
+			Edge smallestEdge = edge.get(0);
+			
+			if ( smallestEdge.fromVertex.equals(visited.get(0)) )
 			{
-				List<String> visitedVertex = new ArrayList<String>();
-				
+				String addVertex = smallestEdge.toVertex;
+				visited.add(0, addVertex);
 			}
+			else if ( smallestEdge.fromVertex.equals(visited.get(visited.size()-1)) )
+			{
+				String addVertex = smallestEdge.toVertex;
+				visited.add(addVertex);
+			}
+			else if ( !smallestEdge.fromVertex.equals(visited.get(visited.size()-1)) )
+			{
+				String addVertex = smallestEdge.toVertex;
+				visited.add(addVertex);
+			}
+			noOfEdge++;
 			
 		}	
 		return visited;
