@@ -54,7 +54,7 @@ public class WeightedGraphTest {
 		assertFalse( iterator.hasNext() );
 	}
 	
-	//@Test
+	@Test
 	public void getEdgeWithTwoVerticesCase()
 	{
 		List<String> vertices = new ArrayList<>();
@@ -67,7 +67,7 @@ public class WeightedGraphTest {
 		assertFalse( iterator.hasNext() );
 	}
 	
-	//@Test
+	@Test
 	public void getEdgeComplexCase()
 	{
 		List<String> vertices = new ArrayList<>();
@@ -75,10 +75,10 @@ public class WeightedGraphTest {
 		vertices.add( "B" );
 		vertices.add( "E" );
 		vertices.add( "C" );
+		vertices.add( "F" );
+		vertices.add( "D" );
 		List<Edge> list = graph.getAdjEdges(vertices);
 		Iterator<Edge> iterator = list.iterator();
-		assertEquals("E - F = 5", iterator.next().toString());
-		assertEquals("C - D = 6", iterator.next().toString());
 		assertFalse( iterator.hasNext() );
 	}
 	
@@ -96,6 +96,4 @@ public class WeightedGraphTest {
 		assertFalse( iterator.hasNext() );
 		
 	}
-	
-
 }

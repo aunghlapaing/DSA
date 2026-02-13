@@ -46,24 +46,12 @@ public class WeightedGraph extends GraphAdjMatrix {
 		this.markedVisited( visited );
 		List<Edge> list = new ArrayList<Edge>();
 		
-		if ( visited.size() == 1 )
+		for ( int i = 0; i < visited.size(); i++ )
 		{
-			String fromVertex = visited.get(0);
+			String fromVertex = visited.get(i);
 			getAdjEdgesForGraph(list, fromVertex);
-			
 		}
-		else if ( visited.size() > 1 )
-		{
-			for ( int i = 0; i < visited.size()/2; i++ )
-			{
-				String fromVertex = visited.get(i);
-				getAdjEdgesForGraph(list, fromVertex);
-				
-				String toVertex = visited.get(i + visited.size()/2);
-				getAdjEdgesForGraph(list, toVertex);
-			}
-		}
-		
+
 		Collections.sort(list);
 		
 		return list;
@@ -104,8 +92,8 @@ public class WeightedGraph extends GraphAdjMatrix {
 					
 					int weight = this.matrix [fromIndex][toIndex];
 					
-					Edge edge = new Edge( fromVertex, vertex, weight );
-					System.out.println( "Edge :"  + fromVertex + "-" + vertex );
+					Edge edge = new Edge( fromVertex, vertex, weight );	
+	
 					list.add(edge);
 				}
 			}
@@ -128,18 +116,14 @@ public class WeightedGraph extends GraphAdjMatrix {
 			List<Edge> edge = this.getAdjEdges(visited);
 			
 			Edge smallestEdge = edge.get(0);
+			System.out.println("Edge :" + smallestEdge.fromVertex + "-" + smallestEdge.toVertex + "=" + smallestEdge.weight );
 			
-			if ( smallestEdge.fromVertex.equals(visited.get(0)) )
-			{
-				String addVertex = smallestEdge.toVertex;
-				visited.add(0, addVertex);
-			}
-			else if ( smallestEdge.fromVertex.equals(visited.get(visited.size()-1)) )
+			if ( visitedToEqualOrNotEqual(visited, smallestEdge))
 			{
 				String addVertex = smallestEdge.toVertex;
 				visited.add(addVertex);
 			}
-			else if ( !smallestEdge.fromVertex.equals(visited.get(visited.size()-1)) )
+			else if ( visitedFromEqual(visited, smallestEdge) )
 			{
 				String addVertex = smallestEdge.toVertex;
 				visited.add(addVertex);
@@ -148,5 +132,13 @@ public class WeightedGraph extends GraphAdjMatrix {
 			
 		}	
 		return visited;
+	}
+
+	public boolean visitedFromEqual(List<String> visited, Edge smallestEdge) {
+		return smallestEdge.fromVertex.equals(visited.get(0));
+	}
+
+	public boolean visitedToEqualOrNotEqual(List<String> visited, Edge smallestEdge) {
+		return smallestEdge.fromVertex.equals(visited.get(visited.size()-1)) || !smallestEdge.fromVertex.equals(visited.get(visited.size()-1));
 	}
 }
