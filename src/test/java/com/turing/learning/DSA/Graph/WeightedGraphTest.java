@@ -32,7 +32,7 @@ public class WeightedGraphTest {
 		graph.addEdge("E", "F", 5);
 	}
 	
-	//@Test
+	@Test
 	public void weightedGraphCase() 
 	{
 		List<String> list = graph.getAdjVertices("A");
@@ -42,7 +42,7 @@ public class WeightedGraphTest {
 		assertFalse( iterator.hasNext() );
 	}
 	
-	//@Test
+	@Test
 	public void getEdgeSimpleCase()
 	{
 		List<String> vertices = new ArrayList<>();
