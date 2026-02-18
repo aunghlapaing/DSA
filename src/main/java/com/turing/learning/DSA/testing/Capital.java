@@ -14,7 +14,7 @@ public class Capital {
 			for (String w : words)
 			{
 				result += toCapitalSingleWord(w) + " ";
-				System.out.println(Arrays.toString(words));
+				System.out.println(result);
 			}
 			return result.trim();
 		}
@@ -33,7 +33,7 @@ public class Capital {
 	{
 		Capital cap = new Capital();
 		
-		String output = cap.toCapital("apple orange");
+		String output = cap.toCapital("apple orange green");
 		
 		System.out.println("output : " + output);
 
