@@ -45,7 +45,7 @@ public class WeightedGraphTest {
 	@Test
 	public void getEdgeSimpleCase()
 	{
-		List<String> vertices = new ArrayList<>();
+		List<String> vertices = new ArrayList<String>();
 		vertices.add( "A" );
 		List<Edge> list = graph.getAdjEdges(vertices);
 		Iterator<Edge> iterator = list.iterator();
@@ -70,7 +70,7 @@ public class WeightedGraphTest {
 	@Test
 	public void getEdgeComplexCase()
 	{
-		List<String> vertices = new ArrayList<>();
+		List<String> vertices = new ArrayList<String>();
 		vertices.add( "A" );
 		vertices.add( "B" );
 		vertices.add( "E" );
