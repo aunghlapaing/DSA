@@ -14,7 +14,7 @@ public class Capital {
 			for (String w : words)
 			{
 				result += toCapitalSingleWord(w) + " ";
-				System.out.println(result);
+				System.out.println("Result :" + result);
 			}
 			return result.trim();
 		}

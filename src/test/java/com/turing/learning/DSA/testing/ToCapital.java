@@ -23,19 +23,14 @@ public class ToCapital {
 		
 		System.out.println("Output : " + output);
 		
-		output = cap.toCapital(" ");
-		
 		assertEquals("", output);
 	}
 	
 	@Test
 	public void testSingleCase()
 	{
-		//Arrange
 		String output = cap.toCapital("a");
-		//Act
-		output = cap.toCapital("A");
-		//Assert
+
 		assertEquals("A", output);
 	}
 	
@@ -44,10 +39,10 @@ public class ToCapital {
 	{
 		String output = cap.toCapital("apple orange");
 		
-		output = cap.toCapital("Apple Orange");
-		
 		assertEquals("Apple Orange", output);
 	}
+	
+
 	
 
 }
