@@ -24,7 +24,9 @@ public class DelimiterTest {
 	@Test
 	public void negativeCase()
 	{
-		assertFalse(delimiter.isValid("a{b]"));
+		assertFalse(delimiter.isValid("}{"));
 	}
+	
+	// ({(){}()})()({(){}()})(){()}
 
 }
