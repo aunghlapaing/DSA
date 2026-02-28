@@ -9,10 +9,13 @@ import org.junit.jupiter.api.Test;
 
 public class HourGlassTest {
 
+	//HourGlass hg = new HourGlass();
+	HourGlass1 hg = new HourGlass1();
+	
 	@Test
 	public void singleHourGlassCase()
 	{
-		HourGlass hg = new HourGlass();
+		
 		List<List<Integer>> list = new ArrayList<>();
 		
 		/*
@@ -47,10 +50,9 @@ public class HourGlassTest {
 		
 	}
 	
-	//@Test
+	@Test
 	public void MultipleDimisionHourGlassCase()
 	{
-		HourGlass hg = new HourGlass();
 		List<List<Integer>> list = new ArrayList<>();
 		
 		/*
