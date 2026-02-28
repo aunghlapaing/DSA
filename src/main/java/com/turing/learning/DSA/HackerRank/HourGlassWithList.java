@@ -1,10 +1,9 @@
 package com.turing.learning.DSA.HackerRank;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.PriorityQueue;
+import java.util.Scanner;
 
-public class HourGlass1 {
+public class HourGlassWithList {
 	
 	public int hourGlassSum( List<List<Integer>> input )
 	{
@@ -14,6 +13,7 @@ public class HourGlass1 {
 			List<Integer> list0 = input.get(i);
 			List<Integer> list1 = input.get(i+1);
 			List<Integer> list2 = input.get(i+2);
+			
 			for ( int j = 0; j < input.size() - 2; j++ )
 			{
 				int sum = list0.get(j) + list0.get(j+1) + list0.get(j+2) + list1.get(j+1) + 
@@ -25,8 +25,7 @@ public class HourGlass1 {
 			}
 		}
 		
-		return result;		
+		return result;	
 	}
 
-	
 }

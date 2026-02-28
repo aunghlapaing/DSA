@@ -4,13 +4,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
 public class HourGlassTest {
 
 	//HourGlass hg = new HourGlass();
-	HourGlass1 hg = new HourGlass1();
+	HourGlassWithList hg = new HourGlassWithList();
 	
 	@Test
 	public void singleHourGlassCase()
@@ -134,4 +136,5 @@ public class HourGlassTest {
 		assertEquals( 19, result );
 		
 	}
+	
 }
