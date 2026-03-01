@@ -1,7 +1,6 @@
 package com.turing.learning.DSA.HackerRank;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class HourGlassWithList {
 	
