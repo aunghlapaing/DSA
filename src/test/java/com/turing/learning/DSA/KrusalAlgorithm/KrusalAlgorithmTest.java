@@ -8,20 +8,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class WeightedGragphTest {
+public class KrusalAlgorithmTest {
 	
-	/* 
-	AdjMatrix
-	addVertices
-	build
-	addEdges
-	*/
+	WeightedGraph graph = new WeightedGraph();
 	
-	@Test
-	public void buildGraphBaseCase()
+	KrusalAlgorithmTest()
 	{
-		WeightedGraph graph = new WeightedGraph();
-		
 		graph.addVertices("A");
 		graph.addVertices("B");
 		graph.addVertices("C");
@@ -49,15 +41,32 @@ public class WeightedGragphTest {
 		graph.addEdge("C", "F", 4 );
 		graph.addEdge("D", "F", 3 );
 		graph.addEdge("E", "F", 3 );
-		
+	}
+	
+	/* 
+	AdjMatrix
+	addVertices
+	build
+	addEdges
+	*/
+	
+	@Test
+	public void buildGraphBaseCase()
+	{
 		assertEquals( 6, graph.arr.length );
 		
 		List<String> vertices = graph.getAdjVertices( "A" );
 		Iterator<String> iterator = vertices.iterator();
 		assertEquals( "B", iterator.next() );
-		assertEquals( "C", iterator.next() );
-		
+		assertEquals( "C", iterator.next() );	
 		
 	}
-
+	
+	@Test
+	public void createEdgeCase()
+	{
+		List<Edge> edges = graph.getAdjEdges();
+		assertEquals( 16, edges.size() );
+	}
+	
 }
