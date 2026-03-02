@@ -1,8 +1,7 @@
 package com.turing.learning.DSA.KrusalAlgorithm;
 
 public class Edge implements Comparable<Edge> {
-	
-	
+
 	String fromVertex;
 	String toVertex;
 	int weight;

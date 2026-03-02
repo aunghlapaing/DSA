@@ -43,7 +43,7 @@ public class KrusalAlgorithmTest {
 		graph.addEdge("E", "F", 3 );
 	}
 	
-	/* 
+	/*
 	AdjMatrix
 	addVertices
 	build
