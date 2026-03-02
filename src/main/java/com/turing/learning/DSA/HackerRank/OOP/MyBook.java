@@ -12,7 +12,9 @@ public class MyBook extends Book {
 	@Override
 	String display() 
 	{
-		System.out.print( "Title : " + super.title + "\n" + "Author : " + super.author + "\n" + "Price : " + this.price);
+		System.out.print( "Title : " + super.title + "\n" +
+						"Author : " + super.author + "\n" + 
+						"Price : " + this.price);
 		return "Let's get abstract.";
 	}
 
