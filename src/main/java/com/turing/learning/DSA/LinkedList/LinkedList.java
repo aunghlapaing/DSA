@@ -6,7 +6,7 @@ public class LinkedList implements Iterable {
 	
 	protected Node firstNode;
 	protected Node lastNode;
-	
+
 	protected LinkedList()
 	{
 		
@@ -46,6 +46,7 @@ public class LinkedList implements Iterable {
 			node.setNext(this.firstNode);
 			this.firstNode = node;
 		}
+		
 	}
 	
 	public void addLast(int item) 

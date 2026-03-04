@@ -19,6 +19,8 @@ public class LinkedListTest {
 		list.addFirst(20);
 		list.addFirst(30);
 		
+		assertEquals( 10, list.getLastNode().getValue());
+		
 		Iterator iterator = list.iterator();
 		
 		assertEquals( 30, ((Node)iterator.next()).getValue() );	
@@ -33,6 +35,16 @@ public class LinkedListTest {
 		list.addLast(10);
 		list.addLast(20);
 		list.addLast(30);
+		
+		// copy references
+		Node newNode = list.firstNode;
+		while ( newNode.next != null )
+		{
+			System.out.println("Node : " + newNode.getValue());
+			newNode = newNode.getNext();
+		}
+		
+		System.out.println("Last Node :" + newNode.getValue());
 		
 		Iterator iterator = list.iterator();
 		
