@@ -13,8 +13,9 @@ public class Git {
 	public static void print(Git git) 
 	{
 		Git newGit = git;
+		newGit.nextGit = git;
 		System.out.println("Git name :" + newGit.name);
-		System.out.println( "Git's git : " + newGit.nextGit );
+		System.out.println( "Git's git : " + newGit.nextGit.name );
 	}
 	
 	public static void main( String[] args )
