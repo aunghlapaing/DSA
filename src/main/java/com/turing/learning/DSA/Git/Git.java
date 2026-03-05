@@ -17,6 +17,7 @@ public class Git {
 		System.out.println("Git name :" + newGit.name);
 		System.out.println( "Git's git : " + newGit.nextGit.name );
 		return newGit;
+		
 	}
 
 }
