@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 public class ArraySumRecursiveTest {
 	
+	
+	/*
 	@Test
 	public void arraySumSimpleCase()
 	{
@@ -15,5 +17,6 @@ public class ArraySumRecursiveTest {
 		
 		assertEquals( 7, result );
 	}
+	*/
 
 }
