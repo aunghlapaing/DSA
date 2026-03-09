@@ -33,7 +33,6 @@ public class QueueWithLinkedList extends LinkedList {
 	public void delete()
 	{
 		// delete first [ 20, 10 ]
-		Node last = this.getLastNode();
 		Node current = this.getFirstNode();
 		Node previous = null;
 		
