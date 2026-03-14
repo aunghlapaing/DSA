@@ -11,12 +11,10 @@ public class ArrayReverseTest {
 	
 	ArrayReverse arrReverse = new ArrayReverse();
 	List<Integer> input = new ArrayList<Integer>();
-	int n;
 	
 	public ArrayReverseTest()
 	{
-		n = 4;
-		
+
 		input.add(4);
 		input.add(2);
 		input.add(1);
@@ -26,7 +24,7 @@ public class ArrayReverseTest {
 	@Test 
 	public void simpleInputCase()
 	{
-		List<Integer> result = arrReverse.reversePrint( n, input );
+		List<Integer> result = arrReverse.reversePrint( input );
 		assertEquals( 4, result.size() );
 	}
 }
