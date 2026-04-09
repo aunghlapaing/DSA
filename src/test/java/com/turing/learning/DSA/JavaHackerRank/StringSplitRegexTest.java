@@ -40,7 +40,7 @@ public class StringSplitRegexTest {
 	}
 	
 	@Test
-	public void withDuplicateCharacterCase()
+	public void withDuplicateSpecialCharacterCase()
 	{
 		String input = "    AI is good ,,,,,   tool";
 		
