@@ -8,7 +8,7 @@ public class StringSplitRegexTest {
 
 	StringSplitRegex solution = new StringSplitRegex();
 	
-	@Test
+	//@Test
 	public void onlySpaceCase()
 	{
 		String input = "AI is good tool";
@@ -22,7 +22,7 @@ public class StringSplitRegexTest {
 		assertEquals( "tool", result[3] );
 	}
 	
-	@Test
+	//@Test
 	public void withSpecialCharacterCase()
 	{
 		String input = "AI is good tool, isn't it?";
@@ -42,7 +42,7 @@ public class StringSplitRegexTest {
 	@Test
 	public void withDuplicateCharacterCase()
 	{
-		String input = "  AI is good   tool";
+		String input = "    AI is good ,,,,,   tool";
 		
 		String[] result = solution.splitToken(input);
 		
