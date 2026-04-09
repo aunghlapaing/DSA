@@ -38,5 +38,15 @@ public class StringSplitRegexTest {
 		assertEquals( "t", result[5] );
 		assertEquals( "it", result[6] );
 	}
+	
+	@Test
+	public void withDuplicateCharacterCase()
+	{
+		String input = "  AI is good   tool";
+		
+		String[] result = solution.splitToken(input);
+		
+		assertEquals( 4, result.length );
+	}
 
 }
