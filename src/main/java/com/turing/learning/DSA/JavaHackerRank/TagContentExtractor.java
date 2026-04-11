@@ -1,30 +1,24 @@
 package com.turing.learning.DSA.JavaHackerRank;
 
 import java.util.regex.*;
+import java.util.*;
 
 public class TagContentExtractor {
 
-	public String validCheck(String input) 
+	public List<String> validCheck(String input) 
 	{
+		List<String> result = new ArrayList<String>();
+		
 		String regex = "<(.+?)>([^<>]+)</\\1>"; // valid regex for html/xml
 		Pattern p = Pattern.compile(regex);
 		
 		Matcher matcher = p.matcher(input);
 		
-		boolean status = false;
-		
 		while( matcher.find() )
 		{
-			status = true;
-			return matcher.group(2);
-			
+			result.add(matcher.group(2));	
 		}
-		if( !status )
-		{
-			return "None";
-		}
-		
-		return null;
+		return result;
 	}
 
 }
