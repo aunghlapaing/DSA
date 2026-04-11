@@ -8,7 +8,7 @@ public class ValidRegex {
 	{
 
 		try {
-			Pattern p = Pattern.compile(regex);
+			Pattern.compile(regex);
 			System.out.println( "Valid" );
 			return true;
 		}
