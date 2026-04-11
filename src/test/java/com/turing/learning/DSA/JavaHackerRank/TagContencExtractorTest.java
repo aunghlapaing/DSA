@@ -1,5 +1,9 @@
 package com.turing.learning.DSA.JavaHackerRank;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
 public class TagContencExtractorTest {
 	
 	@Test
@@ -7,11 +11,11 @@ public class TagContencExtractorTest {
 	{
 		TagContentExtractor solution = new TagContentExtractor();
 		
-		String input = ("<h>This is valid</h>");
+		String input = "<h1>This is valid</h1>";
 		
-		String result = solution.validCheck();
+		String result = solution.validCheck(input);
 		
-		assertEquals( "This is vali", result );
+		assertEquals( "This is valid", result );
 	}
 
 }

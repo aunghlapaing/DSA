@@ -13,7 +13,7 @@ public class ValidRegexTest {
 	public void validRegexCase()
 	{	
 		String regex =  "[^a-zA-Z]";
-		
+					
 		assertTrue( solution.checkValidRegex( regex ) );
 	}
 	
