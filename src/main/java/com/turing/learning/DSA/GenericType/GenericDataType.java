@@ -15,16 +15,16 @@ public class GenericDataType {
 		print.name();
 		print.age();
 		
-		ArrayList<Integer> list = new ArrayList<>();
-		list.add(10);
-		list.add(20);
+		ArrayList<String> list = new ArrayList<>();
+		list.add("Hi");
+		list.add("20");
 		printList(list);
 		
 	}
 	
 	public static void printList(ArrayList<?> list)
 	{
-		System.out.println( "List :" + list );
+		System.out.println( "List :" + list.get(0) );
 	}
 
 }
