@@ -6,18 +6,13 @@ public class HourGlassWithArray {
 	
 	public static void hourGlassSum( int[][] input )
 	{
-		int result = Integer.MIN_VALUE;
+		int result = 0;
 		for ( int i = 0; i < input.length- 2; i++ )
 		{
 			for ( int j = 0; j < input.length - 2; j++  )
 			{
-				int sum = input[i][j] + input[i][j+1] + input[i][j+2] + 
-						input[i+1][j+1] + input[i+2][j] + input[i+2][j+1] + input[i+2][j+2];
-				
-				if ( sum > result )
-				{
-					result = sum;
-				}
+				result = Math.max(result, (input[i][j] + input[i][j+1] + input[i][j+2] + 
+						input[i+1][j+1] + input[i+2][j] + input[i+2][j+1] + input[i+2][j+2]));
 			}
 		}
 		System.out.println( "Result :" + result );	
