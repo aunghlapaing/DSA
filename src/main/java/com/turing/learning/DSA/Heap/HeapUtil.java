@@ -14,10 +14,10 @@ public class HeapUtil {
 
 	private boolean isMax(List<Integer> data, int currentIndex) 
 	{
+		boolean max = true;
 		int leftIndex = ( currentIndex * 2 ) + 1;
 		int rightIndex = ( currentIndex * 2 ) + 2;
 		
-		boolean max = true;
 		if ( leftIndex < data.size() )
 		{
 			if ( root < data.get(leftIndex) )
@@ -33,9 +33,10 @@ public class HeapUtil {
 				max = false;
 			}
 			isMax( data, rightIndex );
-		}
+		}	
 		
 		return max;
+		
 	}
 	
 

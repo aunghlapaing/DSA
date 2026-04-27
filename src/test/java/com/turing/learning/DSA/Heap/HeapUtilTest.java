@@ -22,7 +22,7 @@ public class HeapUtilTest {
 	public void isMaxPositiveCase()
 	{
 		HeapUtil util = new HeapUtil();
-		Integer[] data = { 10, 6, 5, 2, 4, 1 };
+		Integer[] data = { 10, 6, 5, 11, 2, 4, 1 };
 		assertTrue( util.heapUtil(Arrays.asList(data)) );
 
 	}
