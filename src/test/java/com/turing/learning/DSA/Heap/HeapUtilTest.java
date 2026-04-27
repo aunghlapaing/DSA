@@ -9,10 +9,11 @@ import org.junit.jupiter.api.Test;
 
 public class HeapUtilTest {
 	
+	HeapUtil util = new HeapUtil();
+	
 	@Test
 	public void isMaxNegativeCase()
 	{
-		HeapUtil util = new HeapUtil();
 		Integer[] data = { 1, 4, 5, 2, 6, 10 };
 
 		assertFalse( util.heapUtil(Arrays.asList(data)) );
@@ -21,10 +22,17 @@ public class HeapUtilTest {
 	@Test
 	public void isMaxPositiveCase()
 	{
-		HeapUtil util = new HeapUtil();
-		Integer[] data = { 10, 6, 5, 11, 2, 4, 1 };
-		assertTrue( util.heapUtil(Arrays.asList(data)) );
+		Integer[] data = { 10, 13, 5, 12, 2, 4, 1 };
+		assertFalse( util.heapUtil(Arrays.asList(data)) );
 
 	}
+	
+	@Test
+	public void outOfBoundCase()
+	{
+		Integer[] data = {9};
+		assertTrue( util.heapUtil(Arrays.asList(data)) );
+	}
+	
 
 }
