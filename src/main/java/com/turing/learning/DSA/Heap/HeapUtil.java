@@ -9,35 +9,33 @@ public class HeapUtil {
 	boolean heapUtil(List<Integer> list)
 	{
 		root = list.get(0);
-		return isMax( list, root );
+		return isMax( list, 0 );
 	}
 
 	private boolean isMax(List<Integer> data, int currentIndex) 
 	{
-		boolean max = true;
+		int n = data.size();
 		int leftIndex = ( currentIndex * 2 ) + 1;
 		int rightIndex = ( currentIndex * 2 ) + 2;
 		
-		if ( leftIndex < data.size() )
+		if ( leftIndex < n && root < data.get(leftIndex) )
 		{
 			if ( root < data.get(leftIndex) )
 			{
-				max = false;
+				//System.out.println( "Left index Value : " + data.get(leftIndex) );
+				return false;
 			}
 			isMax( data, leftIndex );
 		}
-		if ( rightIndex < data.size() )
-		{
+		
+		if ( rightIndex < n && root < data.get(rightIndex) )
+		{	
 			if ( root < data.get(rightIndex) )
 			{
-				max = false;
+				return false;
 			}
 			isMax( data, rightIndex );
-		}	
-		
-		return max;
-		
+		}
+		return true;
 	}
-	
-
 }
