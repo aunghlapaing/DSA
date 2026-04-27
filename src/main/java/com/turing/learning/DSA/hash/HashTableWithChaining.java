@@ -20,7 +20,7 @@ public class HashTableWithChaining {
 		int count = 0;
 		for ( int i = 0; i < word.length(); i++)
 		{
-			count += word.codePointAt(i);
+			count += word.codePointAt(i); // codePointAt return unicode character value
 		}
 		return count % bucketSize;
 	}

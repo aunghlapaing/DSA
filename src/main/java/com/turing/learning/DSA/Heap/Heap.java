@@ -39,19 +39,13 @@ public class Heap {
 			int largestIndex = ( n / 2) - 1;
 			int leftIndex = ( currentIndex * 2 ) + 1;
 			int rightIndex = ( currentIndex * 2 ) + 2;
-			if ( leftIndex < n )
+			if ( leftIndex < n && list.get(leftIndex) > list.get(largestIndex))
 			{
-				if ( list.get(leftIndex) > list.get(largestIndex) )
-				{
-					largestIndex = leftIndex;
-				}
+				largestIndex = leftIndex;	
 			}
-			if ( rightIndex < n )
+			if ( rightIndex < n && list.get(rightIndex) > list.get(largestIndex) )
 			{
-				if ( list.get(rightIndex) > list.get(largestIndex) )
-				{
-					largestIndex = rightIndex;
-				}
+				largestIndex = rightIndex;
 			}
 			// swap
 			Integer temp = list.get(currentIndex);
@@ -78,7 +72,7 @@ public class Heap {
 				Integer temp = list.get(deleteIndex);
 				Integer last = list.get(n -1);
 				
-				list.set(deleteIndex, last);
+				list.set(deleteIndex, last); // (index, value)
 				list.set(n - 1, temp);
 			}
 			// delete
