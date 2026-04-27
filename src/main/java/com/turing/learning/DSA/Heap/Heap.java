@@ -78,7 +78,7 @@ public class Heap {
 			// delete
 			this.list.remove(n-1);
 			this.heapify();
-			System.out.println( "After Delete List :" + list.toString());
+			//System.out.println( "After Delete List :" + list.toString());
 			return new ArrayList<>(list);
 		}
 		else
