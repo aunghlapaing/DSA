@@ -22,7 +22,6 @@ public class HeapUtil {
 		{
 			if ( root < data.get(leftIndex) )
 			{
-				//System.out.println( "Left index Value : " + data.get(leftIndex) );
 				return false;
 			}
 			isMax( data, leftIndex );
