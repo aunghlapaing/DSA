@@ -9,7 +9,7 @@ public class FrequentASCIIPipeLineTest {
 	@Test
 	public void simpleCase() 
 	{
-		FrequentASCIIPipeLine solution = new FrequenetASCIIPipeLine();
+		FrequentASCIIPipeLine solution = new FrequentASCIIPipeLine();
 		
 		String wordsFromPipeLine = ( "aab" );
 		
