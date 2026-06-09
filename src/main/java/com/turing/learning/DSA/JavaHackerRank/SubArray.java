@@ -8,26 +8,42 @@ public class SubArray {
 		
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		
-		int count = 1;
-		while( count <= arr.length )
+		for( int i = 0; i < arr.length; i++ ) // split count
 		{
-			int k = count;
-			for( int i = 0; i < arr.length; i++ )
+			for( int j = 0; j < arr.length - i; j++) // loop to create sub-array
 			{
 				List<Integer> list = new ArrayList<Integer>();
-				for( int j = i; j < k ; j++ )
+				for( int k = j; k < j + i + 1; k++ ) // create sub array
 				{
-					list.add(arr[j]);
-				}
+					System.out.println( "third loop : " + arr[k] );
+					list.add(arr[k]);
+				}	
 				result.add(list);
-				System.out.println( "K :" + k );
-				k++;
 			}
-			System.out.println( "Count : " + count );
-			count++;
-			
 		}
-		System.out.println( result.size() );
+		
+		System.out.println( "Size of result : " + result.size() );
+		
+		return result;
+	}
+
+	public int negativeSumSubArray(int[] arr) {
+		
+		List<List<Integer>> allSubArr = subArray(arr);
+		
+		int result = 0;
+		for( List<Integer> list : allSubArr )
+		{
+			int sumSubArr = 0;
+			for( int i = 0; i < list.size(); i++ )
+			{
+				sumSubArr += list.get(i);
+			}
+			if( sumSubArr < 0 )
+			{
+				result++;
+			}
+		}
 		
 		return result;
 	}
