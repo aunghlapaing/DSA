@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 
 public class StringSplitRegexTest {
 
-	StringSplitRegex solution = new StringSplitRegex();
+	//StringSplitRegex solution = new StringSplitRegex();
 	
 	//@Test
 	public void onlySpaceCase()
 	{
 		String input = "AI is good tool";
 		
-		String[] result = solution.splitToken(input);
+		String[] result = StringSplitRegex.splitToken(input);
 		
 		assertEquals( 4, result.length );
 		assertEquals( "AI", result[0] );
@@ -27,7 +27,7 @@ public class StringSplitRegexTest {
 	{
 		String input = "AI is good tool, isn't it?";
 		
-		String[] result = solution.splitToken(input);
+		String[] result = StringSplitRegex.splitToken(input);
 		
 		assertEquals( 7, result.length );
 		assertEquals( "AI", result[0] );
@@ -44,7 +44,7 @@ public class StringSplitRegexTest {
 	{
 		String input = "    AI is good ,,,,,   tool";
 		
-		String[] result = solution.splitToken(input);
+		String[] result = StringSplitRegex.splitToken(input);
 		
 		assertEquals( 4, result.length );
 	}
