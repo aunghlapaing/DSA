@@ -1,8 +1,20 @@
 package com.turing.learning.DSA.JavaHackerRank;
 
 public class StringSplitRegex {
-
-	public String[] splitToken(String input) {
+	
+	/*
+	static {
+		
+		for( int i = 0; i < 20000; i++ )
+		{
+			splitToken("");
+			
+		}
+		
+	}
+	*/
+	
+	static String[] splitToken(String input) {
 		
 		String cleaned = input.trim();
 		
@@ -18,5 +30,15 @@ public class StringSplitRegex {
 		
 		return result;
 	}
+	
+	public static void main(String[] args) {
+        long start = System.nanoTime();
+        
+        // 3. Measure the process now that native code is running
+        splitToken("actual,production,tokens"); 
+        
+        long end = System.nanoTime();
+        System.out.println("Execution time: " + (end - start) / 1_000_000.0 + " ms");
+    }
 
 }
