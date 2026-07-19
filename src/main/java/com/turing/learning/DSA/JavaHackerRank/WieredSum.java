@@ -22,9 +22,8 @@ public class WieredSum {
 			
 			if( i != (size/2) - 1 || i == 0 )
 			{
-				String trimString = sumString.replaceAll("\\++$", "");
-				String finalString = trimString+"="+add;
-				result.add(finalString);
+				String trimString = sumString.replaceAll("\\++$", "")+"="+add;
+				result.add(trimString);
 			}
 		}
 		
