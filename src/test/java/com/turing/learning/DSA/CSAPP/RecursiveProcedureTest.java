@@ -7,9 +7,10 @@ import org.junit.jupiter.api.Test;
 
 public class RecursiveProcedureTest {
 	
-	RecursiveProcedure solution = new PalindromeWithLooping();
+	//RecursiveProcedure solution = new PalindromeWithLooping();
+	RecursiveProcedure solution = new PalindromeWithRecursive();
 	
-	//@Test
+	@Test
 	void palindromeTwoCharCase()
 	{
 		String word = "aa";
@@ -17,7 +18,7 @@ public class RecursiveProcedureTest {
 		
 	}
 	
-	//@Test
+	@Test
 	void palindromeThreeCharCase()
 	{
 		String word = "aat";
@@ -25,11 +26,19 @@ public class RecursiveProcedureTest {
 		
 	}
 	
-	//@Test
+	@Test
 	void palindromeFourCharCase()
 	{
 		String word = "aata";
 		assertFalse(solution.isPalindrome(word));
+		
+	}
+	
+	@Test
+	void palindromeFiveCase()
+	{
+		String word = "aataa";
+		assertTrue(solution.isPalindrome(word));
 		
 	}
 	
@@ -41,7 +50,7 @@ public class RecursiveProcedureTest {
 		
 	}
 	
-	//@Test
+	@Test
 	void palindromeUpperCase()
 	{
 		String word = "Aa";
