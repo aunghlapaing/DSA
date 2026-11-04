@@ -28,7 +28,7 @@ public class FibonacciTest {
 	}
 	
 	@Test
-	void TwoFunctSumCase()
+	void twoFunctSumCase()
 	{
 		int result = solution.funct(2);
 		
@@ -37,7 +37,7 @@ public class FibonacciTest {
 	}
 	
 	@Test
-	void ThreeFunctSumCase()
+	void threeFunctSumCase()
 	{
 		int result = solution.funct(3);
 		
@@ -45,15 +45,42 @@ public class FibonacciTest {
 		
 	}
 	
+	@Test
+	void largeNumberFunctSumCase()
+	{
+		int result = solution.funct(13);
+		
+		assertEquals(233, result);
+		
+	}
+	
+	@Test
+	void edgeFunctSumCase()
+	{
+		int result = solution.funct(46);
+		
+		assertEquals(1836311903, result);
+		
+	}
+	
 	//@Test
-	void EdgeFunctSumCase()
+	void OverflowCaseFunctSumCase()
+	{
+		int result = solution.funct(47);
+		
+		assertEquals(-1323752223, result); // throw negative number because the result is out of the range of two complement number (int)
+		
+	}
+	
+	@Test
+	void OverflowCase1FunctSumCase()
 	{
 
 		RuntimeException except = assertThrows(RuntimeException.class, ()->{
-			solution.funct(58);
+			solution.funct(47);
 		});
 		
-		assertEquals("Two Complement Overflow.", except.getMessage());
+		assertEquals("Two Complement overflow.", except.getMessage());
 		
 	}
 

@@ -5,6 +5,7 @@ public class FibonacciFunct extends Fibonacci {
 	@Override
 	int funct(int n) {
 		
+		int result = 0;
 		if( n == 0 ) // exist
 		{
 			return 0;
@@ -15,17 +16,17 @@ public class FibonacciFunct extends Fibonacci {
 		}
 		else
 		{
-			
-			return funct(n-2) + funct(n-1);
-//			try {
-//				result = funct(n-2) + funct(n-1);
-//			}catch(ArithmeticException e)
-//			{
-//				throw new RuntimeException("Two Complement Overflow.");
-//			}
+			result = funct(n-2) + funct(n-1);
 			
 		}
-		
+		if(result < 0)
+		{
+			throw new ArithmeticException("Two Complement overflow.");
+		}
+		else
+		{
+			return result;
+		}
 	}
 
 }
