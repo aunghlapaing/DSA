@@ -1,6 +1,6 @@
 package com.turing.learning.DSA.CSAPP;
 
-public class PalindromeWithRecursive extends RecursiveProcedure {
+public class PalindromeWithRecursive extends Palindrome {
 
 	@Override
 	boolean isPalindrome(String word) {

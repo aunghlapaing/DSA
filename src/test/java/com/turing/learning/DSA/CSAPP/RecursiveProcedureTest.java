@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class RecursiveProcedureTest {
 	
 	//RecursiveProcedure solution = new PalindromeWithLooping();
-	RecursiveProcedure solution = new PalindromeWithRecursive();
+	Palindrome solution = new PalindromeWithRecursive();
 	
 	@Test
 	void palindromeTwoCharCase()
